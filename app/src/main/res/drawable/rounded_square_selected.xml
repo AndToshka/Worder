@@ -1,0 +1,16 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Основной фон -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="16dp"/>
+            <solid android:color="#FFFFFF"/> <!-- Белый фон -->
+        </shape>
+    </item>
+    <!-- Синяя обводка (2dp) -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="14dp"/>
+            <stroke android:width="3dp" android:color="#4285F4"/> <!-- Синий цвет -->
+        </shape>
+    </item>
+</layer-list>

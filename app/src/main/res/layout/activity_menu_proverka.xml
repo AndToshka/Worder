@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pr"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".check.Proverka">
+
+
+    <TextView
+        android:id="@+id/ttr"
+        android:layout_width="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/search_view_bd"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:onClick="Reg"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        app:layout_constraintStart_toEndOf="@id/goBackProverka"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/goBackProverka"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:background="@drawable/bg_round_button_white"
+        android:src="@drawable/ic_back"
+        android:onClick="Go_back_proverka"
+        android:layout_marginTop="18dp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/bn"
+        android:layout_width="203dp"
+        android:layout_height="64dp"
+        android:backgroundTint="@color/white"
+
+        android:onClick="Level"
+        android:textColor="@color/black"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ListView
+        android:id="@+id/choose"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:choiceMode="multipleChoice"
+        app:layout_constraintBottom_toTopOf="@+id/bn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ttr" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

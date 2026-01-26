@@ -1,0 +1,27 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Выбранное состояние (обводка сохраняется) -->
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="16dp"/>
+            <solid android:color="@color/te7"/>
+            <stroke android:width="3dp" android:color="#4285F4"/>
+        </shape>
+    </item>
+
+    <!-- Состояние нажатия (временное) -->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="16dp"/>
+            <solid android:color="#FFFFFF"/>
+            <stroke android:width="3dp" android:color="#4285F4"/>
+        </shape>
+    </item>
+
+    <!-- Обычное состояние -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="16dp"/>
+            <solid android:color="@color/te7"/>
+        </shape>
+    </item>
+</selector>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="fon">#000120</color>
+    <color name="dark">#171725</color>
+    <color name="te1">#EA8E61</color>
+    <color name="te2">#8C8C95</color>
+    <color name="te3">#91919E</color>
+    <color name="te4">#00032D</color>
+    <color name="te5">#3253B5</color>
+    <color name="te6">#643D3B</color>
+    <color name="te7">#1E1F22</color>
+    <color name="te8">#2B2D30</color>
+    <color name="te9">#001838</color>
+    <color name="te10">#2B5278</color>
+    <color name="te11">#FFEAC6</color>
+    <color name="te12">#56BEF0</color>
+    <color name="te13">#DBDBDB</color>
+    <color name="fon_slovar">#00021E</color>
+    <color name="gold">#FFD700</color>
+    <color name="silver">#C0C0C0</color>
+    <color name="bronze">#CD7F32</color>
+
+
+
+
+</resources>

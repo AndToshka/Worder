@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".dictionary.Add">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/tx1"
+        android:textColor="@color/white"
+        android:textSize="45sp"
+        android:layout_marginStart="15dp"
+        app:layout_constraintStart_toEndOf="@+id/goHome"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.55" />
+
+    <EditText
+        android:id="@+id/worde"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:backgroundTint="@color/white"
+        android:hint="@string/tx2"
+        android:textColorHint="@color/te2"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.95" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="54dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/tx3"
+        android:textColor="@color/white"
+        android:textSize="45sp"
+        android:gravity="start"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/worde"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.95" />
+
+    <EditText
+        android:id="@+id/word_r"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:backgroundTint="@color/white"
+        android:hint="@string/tx4"
+        android:textColorHint="@color/te2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.95" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/te1"
+        android:fontFamily="sans-serif-medium"
+        android:onClick="save"
+        android:text="@string/tx5"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.75" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/word_r"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.55" />
+
+    <Button
+        android:id="@+id/addTema"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/te1"
+        android:fontFamily="sans-serif-medium"
+        android:onClick="addTheme"
+        android:text="@string/tx6"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/spinner"
+        app:layout_constraintTop_toBottomOf="@+id/word_r"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.35" />
+
+    <ImageButton
+        android:id="@+id/goHome"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_round_button_white"
+        android:src="@drawable/ic_home"
+        android:onClick="goHome"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toEndOf="@+id/goBack"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/goBack"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_round_button_white"
+        android:src="@drawable/ic_back"
+        android:onClick="goBack"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

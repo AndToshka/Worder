@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<achievemenеts>
+
+    <achievement
+        id="first_word"
+        icon="@drawable/ach_1"
+        title="@string/ach_1"
+        desc="@string/desc_1"
+        secret="false" />
+
+    <achievement
+        id="50_word"
+        icon="@drawable/ach_2"
+        title="@string/ach_2"
+        desc="@string/desc_2"
+        secret="false" />
+
+    <achievement
+        id="100_word"
+        icon="@drawable/ach_3"
+        title="@string/ach_3"
+        desc="@string/desc_3"
+        secret="false" />
+
+    <achievement
+        id="500_word"
+        icon="@drawable/ach_4"
+        title="@string/ach_4"
+        desc="@string/desc_4"
+        secret="false" />
+
+    <achievement
+        id="first_text"
+        icon="@drawable/ach_5"
+        title="@string/ach_5"
+        desc="@string/desc_5"
+        secret="false" />
+
+    <achievement
+        id="10_text"
+        icon="@drawable/ach_6"
+        title="@string/ach_6"
+        desc="@string/desc_6"
+        secret="false" />
+
+    <achievement
+        id="100_text"
+        icon="@drawable/ach_7"
+        title="@string/ach_7"
+        desc="@string/desc_7"
+        secret="false" />
+
+    <achievement
+        id="tolstoy"
+        icon="@drawable/ach_8"
+        title="@string/ach_8"
+        desc="@string/desc_8"
+        secret="false" />
+
+    <achievement
+        id="perfect"
+        icon="@drawable/ach_9"
+        title="@string/ach_9"
+        desc="@string/desc_9"
+        secret="false" />
+
+    <achievement
+        id="topics"
+        icon="@drawable/ach_10"
+        title="@string/ach_10"
+        desc="@string/desc_10"
+        secret="false" />
+
+    <achievement
+        id="professional"
+        icon="@drawable/ach_11"
+        title="@string/ach_11"
+        desc="@string/desc_11"
+        secret="false" />
+
+    <achievement
+        id="worder-regime"
+        icon="@drawable/ach_12"
+        title="@string/ach_12"
+        desc="@string/desc_12"
+        secret="true" />
+
+    <achievement
+        id="super_lose"
+        icon="@drawable/ach_13"
+        title="@string/ach_13"
+        desc="@string/desc_13"
+        secret="true" />
+
+    <achievement
+        id="night_work"
+        icon="@drawable/ach_14"
+        title="@string/ach_14"
+        desc="@string/desc_14"
+        secret="true" />
+
+    <achievement
+        id="good_work"
+        icon="@drawable/ach_15"
+        title="@string/ach_15"
+        desc="@string/desc_15"
+        secret="true" />
+
+    <achievement
+        id="all_ach"
+        icon="@drawable/ach_16"
+        title="@string/ach_16"
+        desc="@string/desc_16"
+        secret="true" />
+
+</achievemenеts>
