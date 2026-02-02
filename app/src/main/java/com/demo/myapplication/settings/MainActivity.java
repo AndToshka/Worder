@@ -12,6 +12,7 @@ import com.demo.myapplication.check.Proverka;
 import com.demo.myapplication.R;
 import com.demo.myapplication.dictionary.Tablica;
 import com.demo.myapplication.texts.Texts;
+import com.demo.myapplication.utilities.Achievement;
 import com.demo.myapplication.utilities.AppSettings;
 import com.demo.myapplication.utilities.ThemeClass;
 
@@ -22,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
         super.attachBaseContext(AppSettings.appleLanguage(newBase));
     }
 
-     Button k1, k2, k3;
-     ImageButton settings, achievements;
+     Button k1, k2, k3; int j=0;
+     ImageButton settings, achievements, question;
      private ThemeClass themeClass;
 
     @Override
@@ -37,18 +38,14 @@ public class MainActivity extends AppCompatActivity {
                 k3 = findViewById(R.id.knopka3)};
                 ImageButton[] imageButtons={
                 settings = findViewById(R.id.roundButton),
-                achievements = findViewById(R.id.achievements)};
+                achievements = findViewById(R.id.achievements),
+                question = findViewById(R.id.question)};
 
         themeClass = new ThemeClass(this, this,
                 null, buttons, imageButtons, null, null, null, null, null, null,
                 null);
         themeClass.callTheme();
-
-
-        int a=4, b =9;
-        double v =a/b;
-        for(int i=0; i<10; i++) v++;
-        }
+    }
 
     @Override
     protected void onResume() {
@@ -56,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
         themeClass.callTheme();
     }
 
+    public void worderRegime(View k) {
+        j++;
+         if(j==7) Achievement.unlock(this, "worder-regime");
+    }
     public void gotoSl(View k1) {
         Intent i = new Intent(this, Tablica.class);
         startActivity(i);

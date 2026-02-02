@@ -1,9 +1,9 @@
 package com.demo.myapplication.utilities;
 
 import android.content.Context;
-import android.content.res.XmlResourceParser;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.demo.myapplication.R;
 
-import org.xmlpull.v1.XmlPullParser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,9 +77,21 @@ public class AchievementsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
     private void bindChoiceViewHolder(ChoiceViewHolder holder, int position) {
         Achievement a = visibleAchievements.get(position);
+
         holder.pictures.setImageResource(a.icon);
         holder.achievements.setText(a.title);
         holder.description.setText(a.desc);
+
+        GradientDrawable circle =
+                (GradientDrawable) holder.pictures.getBackground().mutate();
+
+        boolean unlocked = Achievement.isUnlocked(context, a.id);
+
+        int strokeColor = unlocked
+                ? ContextCompat.getColor(context, R.color.green)
+                : ContextCompat.getColor(context, R.color.gray);
+
+        circle.setStroke(   8, strokeColor);
     }
 
     @Override
@@ -110,10 +121,10 @@ public class AchievementsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                         " ORDER BY CAST(SUBSTR(result, 1, INSTR(result, '/') - 1) AS INTEGER) DESC", null);
                 break;
             case 1:
-                List<Achievement> all = AchievementsRepository.load(context);
+                List<Achievement> all = Achievement.load(context);
                 visibleAchievements = new ArrayList<>();
                 for (Achievement a : all) {
-                    boolean unlocked = AchievementsStorage.isUnlocked(context, a.id);
+                    boolean unlocked = Achievement.isUnlocked(context, a.id);
                     if (!a.secret || unlocked) {
                         visibleAchievements.add(a);
                     }
@@ -147,78 +158,15 @@ public class AchievementsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 }
 
-    class Achievement {
-    public String id;
-    public int icon;
-    public String title;
-    public String desc;
-    public boolean secret;
 
-    public Achievement(String id, int icon, String title, String desc, boolean secret) {
-        this.id = id;
-        this.icon = icon;
-        this.title = title;
-        this.desc = desc;
-        this.secret = secret;
-    }
-}
 
-    class AchievementsStorage {
 
-    private static final String PREFS = "achievements";
 
-    public static boolean isUnlocked(Context c, String id) {
-        return c.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
-                .getBoolean(id, false);
-    }
 
-    public static void unlock(Context c, String id) {
-        c.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
-                .edit()
-                .putBoolean(id, true)
-                .apply();
-    }
-}
 
-    class AchievementsRepository {
 
-    public static List<Achievement> load(Context c) {
-        List<Achievement> list = new ArrayList<>();
 
-        try {
-            XmlResourceParser parser = c.getResources().getXml(R.xml.achievements);
 
-            int event = parser.getEventType();
-            while (event != XmlPullParser.END_DOCUMENT) {
 
-                if (event == XmlPullParser.START_TAG &&
-                        parser.getName().equals("achievement")) {
-
-                    String id = parser.getAttributeValue(null, "id");
-                    int icon = parser.getAttributeResourceValue(null, "icon", 0);
-                    int titleRes = parser.getAttributeResourceValue(null, "title", 0);
-                    int descRes = parser.getAttributeResourceValue(null, "desc", 0);
-                    boolean secret = parser.getAttributeBooleanValue(null, "secret", false);
-
-                    list.add(new Achievement(
-                            id,
-                            icon,
-                            c.getString(titleRes),
-                            c.getString(descRes),
-                            secret
-                    ));
-                }
-
-                event = parser.next();
-            }
-            parser.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return list;
-    }
-}
 
 

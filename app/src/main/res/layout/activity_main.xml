@@ -14,7 +14,9 @@
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
+        android:onClick="worderRegime"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/nazvanie" />
@@ -92,15 +94,26 @@
         app:layout_constraintTop_toBottomOf="@+id/knopka3" />
 
     <ImageButton
-        android:id="@+id/achievements"
+    android:id="@+id/achievements"
+    android:layout_width="70dp"
+    android:layout_height="70dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginEnd="30dp"
+    android:onClick="gotoAch"
+    android:background="@drawable/bg_round_button_white"
+    android:src="@drawable/ic_star"
+    app:layout_constraintEnd_toStartOf="@+id/roundButton"
+    app:layout_constraintTop_toBottomOf="@+id/knopka3" />
+
+    <ImageButton
+        android:id="@+id/question"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="30dp"
-        android:onClick="gotoAch"
+        android:layout_marginStart="30dp"
         android:background="@drawable/bg_round_button_white"
-        android:src="@drawable/ic_star"
-        app:layout_constraintEnd_toStartOf="@+id/roundButton"
+        android:src="@drawable/question"
+        app:layout_constraintStart_toEndOf="@+id/roundButton"
         app:layout_constraintTop_toBottomOf="@+id/knopka3" />
 
 
