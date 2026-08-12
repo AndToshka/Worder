@@ -1,31 +1,21 @@
 package com.demo.myapplication.texts;
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.demo.myapplication.settings.MainActivity;
 import com.demo.myapplication.R;
+import com.demo.myapplication.utilities.BaseActivity;
 import com.demo.myapplication.utilities.DataBase;
-import com.demo.myapplication.utilities.AppSettings;
 import com.demo.myapplication.utilities.TextsAdapter;
-import com.demo.myapplication.utilities.ThemeClass;
 
 import java.util.ArrayList;
 
-public class Texts extends AppCompatActivity {
-    @Override
-    protected void attachBaseContext(Context newBase){
-        super.attachBaseContext(AppSettings.appleLanguage(newBase));
-    }
+public class Texts extends BaseActivity {
 
     ListView new_text, rann_text;
     TextsAdapter adapter2, adapter;
@@ -35,15 +25,12 @@ public class Texts extends AppCompatActivity {
     SQLiteDatabase db;
     Cursor cursor_texts, cursor_texts2;
     int t;
-    ThemeClass themeClassTexts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_texts);
 
-        ImageButton[] imageViewsTexts={findViewById(R.id.imageView2), findViewById(R.id.imageButton)};
-        TextView[] textViewsTexts={findViewById(R.id.textView3), findViewById(R.id.textView4)};
         new_text=findViewById(R.id.new_text);
         rann_text=findViewById(R.id.rann_text);
         database = new DataBase(getApplicationContext());
@@ -58,10 +45,6 @@ public class Texts extends AppCompatActivity {
         if(t==1){
             go_play();
         }
-
-        themeClassTexts= new ThemeClass(this, this, textViewsTexts, null,
-        imageViewsTexts, null, null, null, null, null, null, null);
-        themeClassTexts.callTheme();
     }
 
     private void createTexts() {

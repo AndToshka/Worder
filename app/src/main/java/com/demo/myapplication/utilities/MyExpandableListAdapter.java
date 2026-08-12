@@ -4,29 +4,21 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.PorterDuff;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
 
 import com.demo.myapplication.R;
 
@@ -56,7 +48,6 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
         this.mobileCollection=mobileCollection;
         mobileCollection_or = new HashMap<>();
         mobileCollection_or.putAll(mobileCollection);
-
     }
 
     @Override
@@ -120,29 +111,9 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
             view = inflater.inflate(R.layout.card_item, null);
 
         }
-        LinearLayout itemBackground = view.findViewById(R.id.itemBackround);
-        CardView itemCard =view.findViewById(R.id.itemCard);
         TextView item = view.findViewById(R.id.tem);
         ImageButton delete = view.findViewById(R.id.delete);
         ImageView upd = view.findViewById(R.id.update);
-        ThemeClass themeClass = new ThemeClass(context, activity, null, null,
-                null, null, null, null, null, null, null,null);
-        themeClass.callTheme();
-        itemBackground.setBackgroundColor(themeClass.getForFon());
-        itemCard.setCardBackgroundColor(themeClass.getButtonColor());
-        Drawable icon = ContextCompat.getDrawable(context, R.drawable.ic_close_white);
-        Drawable icon2 = ContextCompat.getDrawable(context, R.drawable.ic_redact);
-        if(icon !=null){
-            icon=icon.mutate();
-            icon.setColorFilter(themeClass.getButtonColor(), PorterDuff.Mode.SRC_IN);
-            delete.setImageDrawable(icon);
-        }
-        if(icon2 !=null){
-            icon2=icon2.mutate();
-            icon2.setColorFilter(themeClass.getButtonColor(), PorterDuff.Mode.SRC_IN);
-            upd.setImageDrawable(icon2);
-        }
-        item.setTextColor(themeClass.getForText());
         item.setText(model);
         delete.setOnClickListener(view12 -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -162,12 +133,11 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
             });
             AlertDialog dialog =builder.create();
             dialog.show();
-            themeClass.styleAlertDialog(dialog);
         });
 
         upd.setOnClickListener(view1 -> {
-            LayoutInflater factory = LayoutInflater.from(context);
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            LayoutInflater factory = LayoutInflater.from(builder.getContext());
             final View textEntryView = factory.inflate(R.layout.alertdialog_item, null);
             builder.setCancelable(true);
             builder.setView(textEntryView);
@@ -183,9 +153,6 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
                 @Override
                 public View getView(int position, View convertView, @NotNull ViewGroup parent){
                     View view4 = super.getView(position, convertView,parent);
-                    TextView text = view4.findViewById(android.R.id.text1);
-                    text.setTextColor(themeClass.getForText());
-                    view4.setBackgroundColor(themeClass.getForFon());
                     return view4;
                 }
             };
@@ -238,36 +205,6 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
             });
             AlertDialog dialog =builder.create();
             dialog.show();
-            Window window = dialog.getWindow();
-            if (window != null) {
-                GradientDrawable drawable = new GradientDrawable();
-                drawable.setCornerRadius(32f);
-                drawable.setStroke(4, themeClass.getButtonColor());
-                drawable.setColor(themeClass.getForFon());
-
-                window.setBackgroundDrawable(drawable);
-            }
-
-            TextView messageView = dialog.findViewById(android.R.id.message);
-            if (messageView != null) {
-                messageView.setTextColor(themeClass.getForText());
-            }
-
-            Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-            Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
-            int specialButton =ContextCompat.getColor(context, R.color.te5);
-
-            if (positiveButton != null) {
-                positiveButton.setTextColor(specialButton);
-            }
-            if (negativeButton != null) {
-                negativeButton.setTextColor(specialButton);
-            }
-            input1.setHintTextColor(themeClass.getForText());
-            input1.setTextColor(themeClass.getForText());
-            input2.setHintTextColor(themeClass.getForText());
-            input2.setTextColor(themeClass.getForText());
-
         });
         return view;
     }
@@ -317,6 +254,5 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
             notifyDataSetChanged();
         }
     }
-    
 
 }

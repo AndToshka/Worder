@@ -1,6 +1,5 @@
 package com.demo.myapplication.texts;
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,20 +12,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.demo.myapplication.R;
+import com.demo.myapplication.utilities.BaseActivity;
 import com.demo.myapplication.utilities.DataBase;
-import com.demo.myapplication.utilities.AppSettings;
-import com.demo.myapplication.utilities.ThemeClass;
 
-public class PlayText extends AppCompatActivity {
-
-    @Override
-    protected void attachBaseContext(Context newBase){
-        super.attachBaseContext(AppSettings.appleLanguage(newBase));
-    }
-
+public class PlayText extends BaseActivity {
     TextView qq, qq2;
     EditText q;
     Button sh;
@@ -34,7 +25,6 @@ public class PlayText extends AppCompatActivity {
     SQLiteDatabase db;
     DataBase database;
     Cursor cs;
-    ThemeClass themeClassPlayn;
 
 
     @Override
@@ -45,9 +35,9 @@ public class PlayText extends AppCompatActivity {
         database = new DataBase(this);
         db = database.getWritableDatabase();
 
-        TextView[] textViewsPlayn ={qq=findViewById(R.id.ddd), qq2=findViewById(R.id.textView8)};
-        EditText[] editTextsPlayn={q=findViewById(R.id.ddd2)};
-        Button[] buttonsPlayn={sh=findViewById(R.id.ddd3)};
+        qq=findViewById(R.id.ddd); qq2=findViewById(R.id.textView8);
+        q=findViewById(R.id.ddd2);
+        sh=findViewById(R.id.ddd3);
 
         Bundle arguments = getIntent().getExtras();
         s1 = arguments.get("hello").toString();
@@ -55,10 +45,6 @@ public class PlayText extends AppCompatActivity {
         s3 = arguments.get("hello3").toString();
 
         qq.setText(s1);
-        themeClassPlayn = new ThemeClass(this, this, textViewsPlayn, buttonsPlayn,
-                null, editTextsPlayn, null, null, null, null, null, null);
-        themeClassPlayn.callTheme();
-        qq2.setBackgroundColor(themeClassPlayn.getButtonColor());
     }
 
     public void smpr(View h) {
@@ -95,10 +81,6 @@ public class PlayText extends AppCompatActivity {
             AlertDialog dialog = builder.create();
             dialog.show();
             dialog.setCanceledOnTouchOutside(false);
-            themeClassPlayn.styleAlertDialog(dialog);
-            input1.setTextColor(themeClassPlayn.getForText());
-            input2.setTextColor(themeClassPlayn.getForText());
-            input3.setTextColor(themeClassPlayn.getForText());
         }
     }
 }

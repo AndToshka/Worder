@@ -1,6 +1,5 @@
 package com.demo.myapplication.check;
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -9,28 +8,18 @@ import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.demo.myapplication.R;
 import com.demo.myapplication.settings.MainActivity;
+import com.demo.myapplication.utilities.BaseActivity;
 import com.demo.myapplication.utilities.DataBase;
-import com.demo.myapplication.utilities.AppSettings;
-import com.demo.myapplication.utilities.ThemeClass;
 
 import java.util.ArrayList;
 
-public class Proverka extends AppCompatActivity {
-
-    @Override
-    protected void attachBaseContext(Context newBase){
-        super.attachBaseContext(AppSettings.appleLanguage(newBase));
-    }
-
+public class Proverka extends BaseActivity {
     TextView rm;
     ListView lvc;
     Button bn;
@@ -39,17 +28,15 @@ public class Proverka extends AppCompatActivity {
     DataBase database;
     ArrayList<String> tem = new ArrayList<>();
     ArrayList<String> choos = new ArrayList<>();
-     ThemeClass themeClassProverka;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_proverka);
 
-        TextView[] textViewsProverka={rm=findViewById(R.id.ttr)};
-        Button[] buttonsProverka={bn=findViewById(R.id.bn)};
-        ImageButton[] imageButtonsProverka={findViewById(R.id.goBackProverka)};
-        ListView[] listViewsProverka={lvc=findViewById(R.id.choose)};
+        rm=findViewById(R.id.ttr);
+        bn=findViewById(R.id.bn);
+        lvc=findViewById(R.id.choose);
 
         database = new DataBase(this);
         db = database.getWritableDatabase();
@@ -78,9 +65,6 @@ public class Proverka extends AppCompatActivity {
 
         ArrayList<ArrayList<String>> interlistProverka = new ArrayList<>();
         interlistProverka.add(tem);
-        themeClassProverka = new ThemeClass(this, this, textViewsProverka, buttonsProverka,
-                imageButtonsProverka, null, null, null, listViewsProverka, interlistProverka, null, null);
-        themeClassProverka.callTheme();
     }
 
     private void createDatt() {

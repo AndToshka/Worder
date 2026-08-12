@@ -48,7 +48,7 @@ public class DataBase extends SQLiteOpenHelper {
             db.execSQL("INSERT INTO Theme (topicTable) VALUES ('Стандартная');");
             db.execSQL("INSERT INTO Text (text_e, text_r, naz) VALUES ('I say hello', 'Я сказал привет', 'Привет')");
             db.execSQL("INSERT INTO Text2 (text_e2, text_r2, naz2) VALUES ('I like fairytale', 'Я люблю сказки', 'Fairytale')");
-            db.execSQL("INSERT INTO ListTop (result, date, orderNum) VALUES ('0/0', '00.00.00')");
+            db.execSQL("INSERT INTO ListTop (result, date) VALUES ('0/0', '00.00.00')");
         }
         @Override
         public void onUpgrade (SQLiteDatabase db,int i, int i1){

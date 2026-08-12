@@ -34,7 +34,7 @@ import java.util.List;
     public static void unlock(Context c, String id) {
         c.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
                 .edit()
-                .putBoolean(id, true)
+                .putBoolean(id, false)
                 .apply();
     }
 

@@ -7,12 +7,9 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
-import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,7 +24,6 @@ import java.time.format.DateTimeFormatter;
 public class Result extends AppCompatDialogFragment {
 
     private final int right, notRight;
-    ThemeClass themeClassResult;
     Context context;
     Activity activity;
     SharedPreferences topScores;
@@ -47,9 +43,6 @@ public class Result extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.stil_result, null);
-        themeClassResult = new ThemeClass(context, activity, null, null,
-                null, null, null, null, null, null, null, null);
-        themeClassResult.callTheme();
 
         builder.setView(view)
                 .setTitle(R.string.tx40)
@@ -74,34 +67,7 @@ public class Result extends AppCompatDialogFragment {
         text2.setText(g2);
         text3.setText(g3);
 
-        text3.setTextColor(themeClassResult.getForText());
-        text1.setTextColor(themeClassResult.getForText());
-        text2.setTextColor(themeClassResult.getForText());
         return builder.create();
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        Dialog dialog = getDialog();
-        if (dialog != null && dialog instanceof AlertDialog) {
-            AlertDialog alertDialog = (AlertDialog) dialog;
-            Window window = alertDialog.getWindow();
-            if (window != null) {
-                GradientDrawable drawable = new GradientDrawable();
-                drawable.setCornerRadius(32f);
-                drawable.setStroke(4, themeClassResult.getButtonColor());
-                drawable.setColor(themeClassResult.getForFon());
-                window.setBackgroundDrawable(drawable);
-            }
-            Button positiveButton = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE);
-            if (positiveButton != null) {
-                positiveButton.setTextColor(themeClassResult.getButtonColor());
-            }
-        }
-        assert dialog != null;
-        dialog.setCanceledOnTouchOutside(false);
     }
 
     private boolean ResultTable() {

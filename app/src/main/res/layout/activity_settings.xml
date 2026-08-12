@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorPrimary"
     tools:context=".settings.Settings">
 
     <TextView
@@ -14,7 +15,7 @@
         android:fontFamily="sans-serif-medium"
         android:gravity="center"
         android:text="@string/tx24"
-        android:textColor="@color/white"
+        android:textColor="?android:textColor"
         android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageButton2"
@@ -156,7 +157,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:onClick="goBackSettings"
-        android:background="@drawable/bg_round_button_white"
+        android:background="@drawable/bg_round_button"
         android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -167,7 +168,7 @@
         android:layout_height="40dp"
         android:gravity="start"
         android:paddingLeft="3dp"
-        android:textColor="@color/white"
+        android:textColor="?android:textColor"
         android:textSize="25sp"
         android:text="@string/tx28"
         android:textStyle="italic"
@@ -261,7 +262,7 @@
         android:layout_height="40dp"
         android:gravity="start"
         android:paddingStart="3dp"
-        android:textColor="@color/white"
+        android:textColor="?android:textColor"
         android:textSize="25sp"
         android:text="@string/tx27"
         android:textStyle="italic"
@@ -288,6 +289,8 @@
             android:layout_marginHorizontal="16dp"
             android:paddingVertical="8dp"
             android:text="Русский"
+            android:theme="@style/AppRadioButtonStyle"
+            android:textColor="?android:textColor"
             android:fontFamily="sans-serif-medium"
             android:textSize="30sp"/>
 
@@ -298,6 +301,8 @@
             android:gravity="center"
             android:layout_marginHorizontal="16dp"
             android:paddingVertical="8dp"
+            android:textColor="?android:textColor"
+            android:theme="@style/AppRadioButtonStyle"
             android:text="English"
             android:fontFamily="sans-serif-medium"
             android:textSize="30sp"/>
@@ -309,7 +314,7 @@
         android:layout_height="35dp"
         android:gravity="start"
         android:paddingLeft="3dp"
-        android:textColor="@color/white"
+        android:textColor="?android:textColor"
         android:textSize="25sp"
         android:text="@string/tx66"
         android:textStyle="italic"
@@ -326,6 +331,7 @@
         android:layout_marginEnd="16dp"
         android:gravity="center"
         android:orientation="horizontal"
+        android:theme="@style/AppRadioButtonStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text4">
@@ -338,8 +344,10 @@
             android:layout_marginEnd="8dp"
             android:fontFamily="sans-serif-medium"
             android:gravity="center_vertical"
+            android:theme="@style/AppRadioButtonStyle"
             android:paddingStart="4dp"
             android:text="5"
+            android:textColor="?android:textColor"
             android:textSize="30sp" />
 
         <RadioButton
@@ -351,8 +359,10 @@
             android:layout_marginEnd="8dp"
             android:fontFamily="sans-serif-medium"
             android:gravity="center_vertical"
+            android:theme="@style/AppRadioButtonStyle"
             android:paddingStart="4dp"
             android:text="10"
+            android:textColor="?android:textColor"
             android:textSize="30sp" />
 
         <RadioButton
@@ -364,7 +374,9 @@
             android:fontFamily="sans-serif-medium"
             android:gravity="center_vertical"
             android:paddingStart="4dp"
+            android:theme="@style/AppRadioButtonStyle"
             android:text="15"
+            android:textColor="?android:textColor"
             android:textSize="30sp" />
     </RadioGroup>
 

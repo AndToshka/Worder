@@ -1,7 +1,6 @@
 package com.demo.myapplication.texts;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,49 +11,29 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 
 import com.demo.myapplication.settings.MainActivity;
 import com.demo.myapplication.R;
+import com.demo.myapplication.utilities.BaseActivity;
 import com.demo.myapplication.utilities.DataBase;
-import com.demo.myapplication.utilities.AppSettings;
-import com.demo.myapplication.utilities.ThemeClass;
 
 
-public class AddText extends AppCompatActivity {
-
-    @Override
-    protected void attachBaseContext(Context newBase){
-        super.attachBaseContext(AppSettings.appleLanguage(newBase));
-    }
-
+public class AddText extends BaseActivity {
     DataBase database;
     SQLiteDatabase db;
     EditText text_eng, text_rus;
     Cursor pr, pr2;
-    ThemeClass themeClassText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_texts);
 
-        TextView[] textViewsText ={findViewById(R.id.textView), findViewById(R.id.textView5)};
-        ImageButton[] imageButtonsText ={findViewById(R.id.goBackText), findViewById(R.id.goHomeText)};
-        EditText[] editTextsText={text_eng=findViewById(R.id.wordeaa), text_rus=findViewById(R.id.prvv)};
-
+        text_eng=findViewById(R.id.wordeaa); text_rus=findViewById(R.id.prvv);
         database = new DataBase(this);
         db = database.getWritableDatabase();
-
-        themeClassText = new ThemeClass(this, this, textViewsText,
-                null, imageButtonsText,editTextsText, null, null, null, null, null, null);
-        themeClassText.callTheme();
-
     }
 
     public void Sl1(View k1) {
@@ -113,7 +92,6 @@ public class AddText extends AppCompatActivity {
             builder.setView(container);
             AlertDialog dialog =builder.create();
             dialog.show();
-            themeClassText.styleAlertDialog(dialog);
         }
     }
 

@@ -6,6 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorPrimary"
     tools:context=".dictionary.Add">
 
     <TextView
@@ -16,7 +17,7 @@
         android:gravity="center"
         android:maxLines="1"
         android:text="@string/tx18"
-        android:textColor="@color/white"
+        android:textColor="?android:textColor"
         android:textSize="27sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -93,7 +94,7 @@
         android:layout_marginStart="5dp"
         android:onClick="Sl2"
         android:layout_marginTop="5dp"
-        android:background="@drawable/bg_round_button_white"
+        android:background="@drawable/bg_round_button"
         android:src="@drawable/ic_home"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@+id/goBackText"/>
@@ -105,7 +106,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:onClick="Sl1"
-        android:background="@drawable/bg_round_button_white"
+        android:background="@drawable/bg_round_button"
         android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -117,7 +118,7 @@
         android:fontFamily="sans-serif-medium"
         android:gravity="center"
         android:text="@string/tx17"
-        android:textColor="@color/white"
+        android:textColor="?android:textColor"
         android:textSize="45sp"
         app:layout_constraintTop_toBottomOf="@+id/wordeaa"
         app:layout_constraintEnd_toEndOf="parent"

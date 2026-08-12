@@ -1,7 +1,6 @@
 package com.demo.myapplication.dictionary;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,59 +9,39 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.demo.myapplication.settings.MainActivity;
 import com.demo.myapplication.R;
+import com.demo.myapplication.utilities.BaseActivity;
 import com.demo.myapplication.utilities.DataBase;
-import com.demo.myapplication.utilities.AppSettings;
-import com.demo.myapplication.utilities.ThemeClass;
 
 import java.util.ArrayList;
 
-public class Add extends AppCompatActivity {
+public class Add extends BaseActivity {
 
-    @Override
-    protected void attachBaseContext(Context newBase){
-        super.attachBaseContext(AppSettings.appleLanguage(newBase));
-    }
-
-    TextView watch;
     EditText word_e, word_r;
-    ImageButton goHomeAdd, goBackAdd;
     Spinner spin;
     Cursor userCursor;
-    Button btn, btn2;
     private String condition;
     ArrayList<String> copy = new ArrayList<>();
     SQLiteDatabase db;
     DataBase database;
-    ThemeClass themeClass_add;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
 
-            TextView[] textViews_add={watch = findViewById(R.id.textView)};
-            Button[] buttons_add={btn = findViewById(R.id.button), btn2 = findViewById(R.id.addTema)};
-            ImageButton[] imageButtonsAdd={goBackAdd=findViewById(R.id.goBack), goHomeAdd=findViewById(R.id.goHome)};
-            EditText[] editTexts_add ={word_e = findViewById(R.id.worde), word_r = findViewById(R.id.word_r)};
-            Spinner[] spinners_add={spin = findViewById(R.id.spinner)};
-
+            spin = findViewById(R.id.spinner);
+            word_e = findViewById(R.id.worde);
+            word_r = findViewById(R.id.word_r);
             database = new DataBase(this);
             db = database.getWritableDatabase();
 
-            themeClass_add = new ThemeClass(this, this,
-                    textViews_add, buttons_add,imageButtonsAdd, editTexts_add, spinners_add, null, null, null, null, null);
-            themeClass_add.callTheme();
 
             userCursor = db.rawQuery("select * from "+ DataBase.TABLE2, null);
             if(userCursor.moveToFirst()) {
@@ -86,8 +65,6 @@ public class Add extends AppCompatActivity {
                 }
             };
             spin.setOnItemSelectedListener(itemSelectedListener);
-
-
     }
 
     public void addTheme(View view) {
@@ -96,7 +73,7 @@ public class Add extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(Add.this);
                 builder.setTitle(R.string.tx32);
 
-                final EditText ed = new EditText(Add.this);
+                final EditText ed = new EditText(builder.getContext());
                 ed.setInputType(InputType.TYPE_CLASS_TEXT);
                 builder.setView(ed);
                 builder.setCancelable(true);
@@ -119,7 +96,6 @@ public class Add extends AppCompatActivity {
          });
         AlertDialog dialog =builder.create();
         dialog.show();
-        themeClass_add.styleAlertDialog(dialog);
     }
     public void save(View v){
              database = new DataBase(this);
@@ -127,7 +103,7 @@ public class Add extends AppCompatActivity {
             String e = word_e.getText().toString().trim();
             String e2 = word_r.getText().toString().trim();
             String e3 = condition;
-            if (e.isEmpty() | e2.isEmpty()) {
+            if (e.isEmpty() || e2.isEmpty()) {
                 Toast.makeText(Add.this, R.string.pd1, Toast.LENGTH_SHORT).show();
             } else {
                 ContentValues cv = new ContentValues();

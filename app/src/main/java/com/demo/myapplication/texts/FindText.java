@@ -1,33 +1,23 @@
 package com.demo.myapplication.texts;
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SearchView;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.demo.myapplication.settings.MainActivity;
 import com.demo.myapplication.R;
+import com.demo.myapplication.utilities.BaseActivity;
 import com.demo.myapplication.utilities.DataBase;
-import com.demo.myapplication.utilities.AppSettings;
-import com.demo.myapplication.utilities.ThemeClass;
 
 import java.util.ArrayList;
 
-public class FindText extends AppCompatActivity {
-
-    @Override
-    protected void attachBaseContext(Context newBase){
-        super.attachBaseContext(AppSettings.appleLanguage(newBase));
-    }
-
+public class FindText extends BaseActivity {
     SQLiteDatabase db;
     DataBase database;
     ArrayList<String> for_naz = new ArrayList<>();
@@ -37,16 +27,13 @@ public class FindText extends AppCompatActivity {
     SearchView search;
     AlertDialog.Builder builder;
     String angll, rusn;
-    ThemeClass themeClassRedact;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_redact_texts);
 
-        ImageButton[] imageButtonsRedact={findViewById(R.id.goHomeRedact), findViewById(R.id.goBackRedact)};
         All_tem = findViewById(R.id.listView);
-        ListView[] listViewsRedact={All_tem};
         search = findViewById(R.id.searchView);
 
         database = new DataBase(this);
@@ -103,7 +90,6 @@ public class FindText extends AppCompatActivity {
             builder.setNegativeButton(R.string.tx30, null);
             AlertDialog dialog =builder.create();
             dialog.show();
-            themeClassRedact.styleAlertDialog(dialog);
         });
 
 
@@ -120,14 +106,6 @@ public class FindText extends AppCompatActivity {
                 return false;
             }
         });
-
-        ArrayList<ArrayList<String>> interFindList = new ArrayList<>();
-        interFindList.add(for_naz);
-        themeClassRedact = new ThemeClass(this, this, null, null,
-                imageButtonsRedact, null, null, search, listViewsRedact, interFindList, null, null);
-        search.post(() -> themeClassRedact.callTheme());
-        themeClassRedact.callTheme();
-
     }
 
 

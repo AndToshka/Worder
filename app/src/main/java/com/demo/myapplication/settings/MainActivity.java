@@ -14,43 +14,16 @@ import com.demo.myapplication.dictionary.Tablica;
 import com.demo.myapplication.texts.Texts;
 import com.demo.myapplication.utilities.Achievement;
 import com.demo.myapplication.utilities.AppSettings;
-import com.demo.myapplication.utilities.ThemeClass;
+import com.demo.myapplication.utilities.BaseActivity;
 
-public class MainActivity extends AppCompatActivity {
-
-    @Override
-    protected void attachBaseContext(Context newBase){
-        super.attachBaseContext(AppSettings.appleLanguage(newBase));
-    }
-
-     Button k1, k2, k3; int j=0;
-     ImageButton settings, achievements, question;
-     private ThemeClass themeClass;
+public class MainActivity extends BaseActivity {
+      int j=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-                Button[] buttons={
-                k1 = findViewById(R.id.knopka1),
-                k2 = findViewById(R.id.knopka2),
-                k3 = findViewById(R.id.knopka3)};
-                ImageButton[] imageButtons={
-                settings = findViewById(R.id.roundButton),
-                achievements = findViewById(R.id.achievements),
-                question = findViewById(R.id.question)};
-
-        themeClass = new ThemeClass(this, this,
-                null, buttons, imageButtons, null, null, null, null, null, null,
-                null);
-        themeClass.callTheme();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        themeClass.callTheme();
     }
 
     public void worderRegime(View k) {
@@ -61,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, Tablica.class);
         startActivity(i);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-        }
+    }
 
     public void gotoPr(View k2) {
     Intent i = new Intent(this, Proverka.class);

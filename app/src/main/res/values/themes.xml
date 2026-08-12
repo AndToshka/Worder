@@ -1,8 +1,6 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+<resources>
+    <!-- TODO: разобраться с пиздецом что здесь происходит -->
     <style name="Base.Theme.MyApplication" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">false</item>
         <item name="windowActionBar">true</item>
@@ -13,24 +11,106 @@
         <item name="colorPrimary">@color/white</item>
         <item name="colorOnPrimary">@color/te13</item>
         <item name="android:textColor">@color/black</item>
+        <item name="myDynamicColor">@color/black</item>
         <item name="android:statusBarColor">@color/white</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="alertDialogTheme">@style/AlertDialogTheme</item>
+        <item name="android:spinnerStyle">@style/SpinnerStyle</item>
+        <item name="android:expandableListViewStyle">@style/AppExpandableListViewStyle</item>
+        <item name="colorControlNormal">?android:textColor</item>
+        <item name="colorControlActivated">?android:textColor</item>
+        <item name="android:textColorPrimary">?android:attr/textColor</item>
+        <item name="android:radioButtonStyle">@style/AppRadioButtonStyle</item>
     </style>
 
     <style name="ThemeDark" parent="Base.Theme.MyApplication">
         <item name="colorPrimary">@color/te7</item>
         <item name="colorOnPrimary">@color/te8</item>
         <item name="android:textColor">@color/white</item>
+        <item name="myDynamicColor">@color/white</item>
         <item name="android:statusBarColor">@color/te7</item>
         <item name="android:windowLightStatusBar">false</item>
+        <item name="alertDialogTheme">@style/AlertDialogTheme</item>
+        <item name="android:spinnerStyle">@style/SpinnerStyle</item>
+        <item name="android:expandableListViewStyle">@style/AppExpandableListViewStyle</item>
+        <item name="colorControlNormal">?android:textColor</item>
+        <item name="colorControlActivated">?android:textColor</item>
+        <item name="android:textColorPrimary">?android:attr/textColor</item>
+        <item name="android:radioButtonStyle">@style/AppRadioButtonStyle</item>
     </style>
 
     <style name="ThemeBlue" parent="Base.Theme.MyApplication">
         <item name="colorPrimary">@color/te9</item>
         <item name="colorOnPrimary">@color/te10</item>
         <item name="android:textColor">@color/white</item>
+        <item name="myDynamicColor">@color/white</item>
         <item name="android:statusBarColor">@color/te9</item>
         <item name="android:windowLightStatusBar">false</item>
+        <item name="alertDialogTheme">@style/AlertDialogTheme</item>
+        <item name="android:spinnerStyle">@style/SpinnerStyle</item>
+        <item name="android:expandableListViewStyle">@style/AppExpandableListViewStyle</item>
+        <item name="colorControlNormal">?android:textColor</item>
+        <item name="colorControlActivated">?android:textColor</item>
+        <item name="android:textColorPrimary">?android:textColor</item>
+        <item name="android:radioButtonStyle">@style/AppRadioButtonStyle</item>
+    </style>
+
+
+
+
+
+    <style name="SearchViewThemeOverlay">
+        <item name="android:textColorPrimary">?android:textColor</item>
+        <item name="android:textColorHint">?android:textColor</item>
+        <item name="colorControlNormal">?android:textColor</item>
+    </style>
+
+    <style name="AlertDialogTheme" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/dialog_background</item>
+        <item name="android:windowMinWidthMajor">@dimen/abc_dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@dimen/abc_dialog_min_width_minor</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:textColorPrimary">?android:attr/textColor</item>
+        <item name="android:textColorHint">?android:attr/textColor</item>
+        <item name="colorControlActivated">?android:attr/textColor</item>
+        <item name="colorControlNormal">?android:attr/textColor</item>
+        <item name="android:editTextColor">?android:attr/textColor</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/DialogTitle</item>
+        <item name="materialAlertDialogBodyTextStyle">@style/DialogBody</item>
+        <item name="buttonBarPositiveButtonStyle">@style/DialogButton</item>
+        <item name="buttonBarNegativeButtonStyle">@style/DialogButton</item>
+    </style>
+
+    <style name="DialogTitle" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
+        <item name="android:textColor">?android:attr/textColor</item>
+    </style>
+
+    <style name="DialogBody" parent="MaterialAlertDialog.MaterialComponents.Body.Text">
+        <item name="android:textColor">?android:attr/textColor</item>
+    </style>
+
+    <style name="DialogButton" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/te5</item>
+    </style>
+
+
+
+    <style name="SpinnerStyle" parent="Widget.AppCompat.Spinner">
+        <item name="android:background">?attr/colorOnPrimary</item>
+        <item name="android:popupBackground">?attr/colorPrimary</item>
+    </style>
+
+    <style name="AppExpandableListViewStyle" parent="android:Widget.ExpandableListView">
+        <item name="android:groupIndicator">@drawable/group_indicator</item>
+        <item name="android:listSelector">@android:color/transparent</item>
+    </style>
+
+
+
+    <style name="AppRadioButtonStyle" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:textColor">?attr/myDynamicColor</item>
+        <item name="buttonTint">?attr/myDynamicColor</item>
     </style>
 
 

@@ -7,14 +7,14 @@
     <!-- Хвост -->
     <path
         android:strokeWidth="4"
-        android:strokeColor="#FF000000"
+        android:strokeColor="?attr/android:textColor"
         android:strokeLineCap="round"
         android:pathData="M6,12 H20" />
 
     <!-- Головка стрелки (с закруглёнными углами) -->
     <path
         android:strokeWidth="4"
-        android:strokeColor="#FF000000"
+        android:strokeColor="?attr/android:textColor"
         android:strokeLineCap="round"
         android:strokeLineJoin="round"
         android:pathData="M12,6 L6,12 L12,18" />

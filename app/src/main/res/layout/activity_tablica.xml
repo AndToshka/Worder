@@ -6,22 +6,21 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".dictionary.Tablica">
+    tools:context=".dictionary.Tablica"
+    android:background="?attr/colorPrimary">
 
     <ExpandableListView
         android:id="@+id/elv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/fon"
-        android:divider="#000120"
-        android:dividerHeight="5dp"
+        android:background="?attr/colorPrimary"
+        android:divider="?attr/colorOnPrimary"
         android:isScrollContainer="false"
         android:padding="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search"
         app:layout_constraintVertical_bias="1.0">
-
     </ExpandableListView>
 
     <SearchView
@@ -34,6 +33,7 @@
         android:background="@drawable/search_view_bd"
         android:iconifiedByDefault="false"
         android:queryHint="@string/tx12"
+        android:theme="@style/SearchViewThemeOverlay"
         app:layout_constraintEnd_toStartOf="@+id/plus2"
         app:layout_constraintStart_toEndOf="@+id/gb"
         app:layout_constraintTop_toTopOf="parent" />
@@ -55,7 +55,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
-        android:background="@drawable/bg_round_button_white"
+        android:background="@drawable/bg_round_button"
         android:src="@drawable/ic_redact"
         android:onClick="Redact"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,7 +67,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
-        android:background="@drawable/bg_round_button_white"
+        android:background="@drawable/bg_round_button"
         android:src="@drawable/ic_back"
         android:onClick="bakk"
         app:layout_constraintStart_toStartOf="parent"

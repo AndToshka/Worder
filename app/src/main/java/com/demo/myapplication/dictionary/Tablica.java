@@ -8,33 +8,22 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ExpandableListView;
-import android.widget.ImageButton;
 import android.widget.SearchView;
 import android.widget.Toast;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.demo.myapplication.settings.MainActivity;
 import com.demo.myapplication.R;
+import com.demo.myapplication.utilities.BaseActivity;
 import com.demo.myapplication.utilities.DataBase;
-import com.demo.myapplication.utilities.AppSettings;
 import com.demo.myapplication.utilities.MyExpandableListAdapter;
-import com.demo.myapplication.utilities.ThemeClass;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Tablica extends AppCompatActivity
+public class Tablica extends BaseActivity
         implements SearchView.OnQueryTextListener, SearchView.OnCloseListener{
-
-
-    @Override
-    protected void attachBaseContext(Context newBase){
-        super.attachBaseContext(AppSettings.appleLanguage(newBase));
-    }
-
-
 
     List<String> groupList, childList;
     Map<String, List<String>> mobileCollection;
@@ -49,14 +38,12 @@ public class Tablica extends AppCompatActivity
     ArrayList<String> pr = new ArrayList<>();
     ArrayList<String> slpr = new ArrayList<>();
     ArrayList<String> ty = new ArrayList<>();
-    ThemeClass themeClassTable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tablica);
 
-        ImageButton[] imageButtonsTable ={findViewById(R.id.gb), findViewById(R.id.plus)};
         search = findViewById(R.id.search);
         searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
 
@@ -91,10 +78,6 @@ public class Tablica extends AppCompatActivity
         search.setOnQueryTextListener(this);
         search.setOnCloseListener(this);
         search.clearFocus();
-
-        themeClassTable = new ThemeClass(this, this, null, null,
-                imageButtonsTable, null, null, search, null, null, expandableListView, null);
-        themeClassTable.callTheme();
     }
 
     private void explandAll() {

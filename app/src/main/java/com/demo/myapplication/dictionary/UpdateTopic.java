@@ -1,7 +1,6 @@
 package com.demo.myapplication.dictionary;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -9,29 +8,21 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.demo.myapplication.settings.MainActivity;
 import com.demo.myapplication.R;
+import com.demo.myapplication.utilities.BaseActivity;
 import com.demo.myapplication.utilities.DataBase;
-import com.demo.myapplication.utilities.AppSettings;
 import com.demo.myapplication.utilities.TemyAdapter;
-import com.demo.myapplication.utilities.ThemeClass;
 
 import java.util.ArrayList;
 
-public class UpdateTopic extends AppCompatActivity {
-
-    @Override
-    protected void attachBaseContext(Context newBase){
-        super.attachBaseContext(AppSettings.appleLanguage(newBase));
-    }
+public class UpdateTopic extends BaseActivity {
 
     DataBase database;
     SQLiteDatabase db;
@@ -40,14 +31,12 @@ public class UpdateTopic extends AppCompatActivity {
     ListView userList;
     SearchView search_filter;
     ArrayList<String> nn = new ArrayList<>();
-    ThemeClass themeClassRdt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_redact_tema);
 
-        ImageButton[] imageButtonsRdt ={findViewById(R.id.backRdt), findViewById(R.id.go_home)};
         userList = findViewById(R.id.vv);
         search_filter = findViewById(R.id.search);
 
@@ -56,10 +45,6 @@ public class UpdateTopic extends AppCompatActivity {
         createData();
         temyAdapter = new TemyAdapter(this,this,  R.layout.stil_temy ,nn);
         userList.setAdapter(temyAdapter);
-
-        themeClassRdt = new ThemeClass(this, this, null, null,
-                imageButtonsRdt, null, null, null, null, null, null, null);
-        themeClassRdt.callTheme();
 
         search_filter.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -123,7 +108,6 @@ public class UpdateTopic extends AppCompatActivity {
         });
         AlertDialog dialog =builder.create();
         dialog.show();
-        themeClassRdt.styleAlertDialog(dialog);
     }
 
 }

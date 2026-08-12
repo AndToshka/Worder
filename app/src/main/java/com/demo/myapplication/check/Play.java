@@ -1,6 +1,5 @@
 package com.demo.myapplication.check;
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,29 +7,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.demo.myapplication.R;
 import com.demo.myapplication.settings.MainActivity;
+import com.demo.myapplication.utilities.BaseActivity;
 import com.demo.myapplication.utilities.DataBase;
-import com.demo.myapplication.utilities.AppSettings;
 import com.demo.myapplication.utilities.Result;
-import com.demo.myapplication.utilities.ThemeClass;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Play extends AppCompatActivity {
-
-    @Override
-    protected void attachBaseContext(Context newBase){
-        super.attachBaseContext(AppSettings.appleLanguage(newBase));
-    }
-
+public class Play extends BaseActivity {
     ArrayList<String> vbtem = new ArrayList<>();
     ArrayList<String> wordo = new ArrayList<>();
     ArrayList<String> translate = new ArrayList<>();
@@ -44,7 +33,6 @@ public class Play extends AppCompatActivity {
     int t=0;
     int t1=0;
     private int currentIndex = -1;
-    ThemeClass themeClassPlayer;
 
 
     @Override
@@ -52,12 +40,11 @@ public class Play extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
 
-        TextView[] textViewsPlayer={word = findViewById(R.id.iii),
-        word2 = findViewById(R.id.iii2), word3 = findViewById(R.id.iii3),
-                stat1 = findViewById(R.id.iii4), stat2 = findViewById(R.id.iii5)};
-        Button[] buttonsPlayer={btn = findViewById(R.id.button2)};
-        ImageButton[] imageButtonsPlayer={findViewById(R.id.bbb), findViewById(R.id.imageViewgb)};
-        EditText[] editTextsPlayer={edt = findViewById(R.id.editTextText)};
+        word = findViewById(R.id.iii);
+        word2 = findViewById(R.id.iii2); word3 = findViewById(R.id.iii3);
+        stat1 = findViewById(R.id.iii4); stat2 = findViewById(R.id.iii5);
+        btn = findViewById(R.id.button2);
+        edt = findViewById(R.id.editTextText);
 
         Intent inter = getIntent();
         reg = inter.getIntExtra("key2", 1);
@@ -84,10 +71,6 @@ public class Play extends AppCompatActivity {
         if(translate.isEmpty() || wordo.isEmpty()){
             showResults();
         }
-
-        themeClassPlayer = new ThemeClass(this, this, textViewsPlayer, buttonsPlayer,
-                imageButtonsPlayer, editTextsPlayer, null, null, null, null, null, null);
-        themeClassPlayer.callTheme();
     }
 
     private void showNextWord() {

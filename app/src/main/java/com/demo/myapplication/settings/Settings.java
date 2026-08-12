@@ -11,31 +11,21 @@ import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.demo.myapplication.R;
 import com.demo.myapplication.utilities.AppSettings;
-import com.demo.myapplication.utilities.ThemeClass;
+import com.demo.myapplication.utilities.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Settings extends AppCompatActivity {
-
-    @Override
-    protected void attachBaseContext(Context newBase){
-        super.attachBaseContext(AppSettings.appleLanguage(newBase));
-    }
-
-    private ThemeClass themeClass;
+public class Settings extends BaseActivity {
     List<LinearLayout> elements = new ArrayList<>();
     List<FrameLayout> icons = new ArrayList<>();
     SharedPreferences preferences;
@@ -57,16 +47,11 @@ public class Settings extends AppCompatActivity {
         englishButton = findViewById(R.id.englishButton);
         num5 = findViewById(R.id.num5);
         num10 = findViewById(R.id.num10);
-        num15 = findViewById(R.id.num15);
+         num15 = findViewById(R.id.num15);
         FrameLayout clickableElement4 = findViewById(R.id.iconBlackContainer);
         FrameLayout clickableElement5 = findViewById(R.id.imageButton3Container);
         FrameLayout clickableElement6 = findViewById(R.id.icon2Container);
-        TextView[] textViews = {
-                findViewById(R.id.textView6), findViewById(R.id.text1), findViewById(R.id.text2),
-            findViewById(R.id.text3), findViewById(R.id.text4)};
-        RadioButton[] radioButtons ={englishButton, russianButton, num5, num10, num15};
         radioGroup = findViewById(R.id.radioGroup);
-        ImageButton[] imageButtons={findViewById(R.id.imageButton2)};
 
         elements.add(clickableElement1);
         elements.add(clickableElement2);
@@ -85,24 +70,18 @@ public class Settings extends AppCompatActivity {
             setBackgroundColorsNormal(elements.get(i), backgroundColors[i]);
         }
 
-        setupSelectionLogic();
-        themeClass = new ThemeClass(this, this, textViews,
-                null, imageButtons, null, null, null, null,
-                null, null, radioButtons);
-        themeClass.callTheme();
-        String currentTheme = themeClass.callTheme();
+        int currentTheme = AppSettings.getTheme(this);
         int currentNum;
-        switch (currentTheme){
-            case "LightMode":
-            default:
-                currentNum=0;
-                break;
-            case "DarkMode":
-                currentNum=1;
-                break;
-            case "BlueMode":
-                currentNum=2;
+        if (currentTheme == R.style.ThemeDark) {
+            currentNum = 1;
+        } else if (currentTheme == R.style.ThemeBlue) {
+            currentNum = 2;
+        } else {
+            currentNum = 0;
         }
+        updateTheme(currentNum);
+
+        setupSelectionLogic();
 
         String currentLang = AppSettings.getLanguage(this);
         if("en".equals(currentLang)){
@@ -119,7 +98,6 @@ public class Settings extends AppCompatActivity {
             recreate();
         });
 
-        onItemSelected(currentNum);
         setIcon();
     }
 
@@ -128,15 +106,11 @@ public class Settings extends AppCompatActivity {
         for(final FrameLayout frameLayout : icons) {
               GradientDrawable defaultDrawable = (GradientDrawable)
                     ContextCompat.getDrawable(this, R.drawable.ic_restangle).mutate();
-            defaultDrawable.setColor(themeClass.getButtonColor());
             frameLayout.setBackground(defaultDrawable);
             int finalI = icons.indexOf(frameLayout);
 
             if(icons.indexOf(frameLayout)==savedIndex){
                 defaultDrawable.setColor(ContextCompat.getColor(this, R.color.te5));
-            }
-            else{
-                defaultDrawable.setColor(themeClass.getButtonColor());
             }
 
             frameLayout.setOnClickListener(v -> {
@@ -146,9 +120,6 @@ public class Settings extends AppCompatActivity {
                              ContextCompat.getDrawable(this, R.drawable.ic_restangle).mutate();
                      if(icons.indexOf(item) == finalI){
                          drawable.setColor(ContextCompat.getColor(this, R.color.te5));
-                     }
-                     else {
-                         drawable.setColor(themeClass.getButtonColor());
                      }
                      item.setBackground(drawable);
                  }
@@ -173,32 +144,24 @@ public class Settings extends AppCompatActivity {
     }
 
     private void onItemSelected(int position) {
-        String textToSave;
-
-        switch(position){
-            case 0:
-            default:
-                textToSave="LightMode";
-                AppSettings.saveTheme(this, R.style.ThemeLight);
-                break;
-            case 1:
-                textToSave="DarkMode";
-                AppSettings.saveTheme(this, R.style.ThemeDark);
-                break;
-            case 2:
-                textToSave="BlueMode";
-                AppSettings.saveTheme(this, R.style.ThemeBlue);
-                break;
+        switch (position){
+            case 0: default: AppSettings.saveTheme(this, "LightMode"); break;
+            case 1: AppSettings.saveTheme(this, "DarkMode"); break;
+            case 2: AppSettings.saveTheme(this, "BlueMode"); break;
         }
 
         //для нажатого и не нажатаго положения
-        for(int i=0; i<elements.size(); i++) {
-            if (i != position) {
-                setBackgroundColorsNormal(elements.get(i), backgroundColors[i]);}
-        }
+        updateTheme(position);
+        recreate();
+    }
 
+    private void updateTheme(int position){
+        for(int i=0; i<elements.size(); i++){
+            if(i!=position){
+                setBackgroundColorsNormal(elements.get(i), backgroundColors[i]);
+            }
+        }
         setElementBackgroundColor(elements.get(position), backgroundColors[position]);
-        themeClass.saveTheme(textToSave);
     }
 
     private void setBackgroundColorsNormal(LinearLayout element, int colorResId){

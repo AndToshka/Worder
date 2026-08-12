@@ -14,8 +14,7 @@ public class AppSettings {
 
     private static final String PREF_NAME = "app_name";
     private static final String KEY_LANGUAGE = "key_language";
-    private static final String KEY_THEME = "key_theme";
-    private static final int DEFAULT_THEME = R.style.ThemeDark;
+    private static final String KEY_THEME = "key_theme_v2";
 
     public static void saveLanguage(Context context, String lang){
         getPrefs(context).edit().putString(KEY_LANGUAGE, lang).apply();}
@@ -32,11 +31,19 @@ public class AppSettings {
         config.setLayoutDirection(locale);
         return context.createConfigurationContext(config);}
 
+    public static void saveTheme(Context context, String themeName){
+        getPrefs(context).edit().putString(KEY_THEME, themeName).apply();
+    }
 
-    public static void saveTheme(Context context, int themeId){
-         getPrefs(context).edit().putInt(KEY_THEME, themeId).apply();}
     public static int getTheme(Context context){
-         return getPrefs(context).getInt(KEY_THEME, DEFAULT_THEME);}
+        String themeName = getPrefs(context).getString(KEY_THEME, "DarkMode");
+        switch (themeName){
+            case "LightMode": return R.style.ThemeLight;
+            case "BlueMode": return R.style.ThemeBlue;
+            case "DarkMode":
+            default: return R.style.ThemeDark;
+        }
+    }
     public static void applyTheme(Activity activity){
         activity.setTheme(getTheme(activity));
     }

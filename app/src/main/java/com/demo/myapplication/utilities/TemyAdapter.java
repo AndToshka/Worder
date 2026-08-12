@@ -1,12 +1,9 @@
 package com.demo.myapplication.utilities;
 
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.text.InputType;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -21,7 +18,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.core.content.ContextCompat;
 
 import com.demo.myapplication.R;
 import java.util.ArrayList;
@@ -32,7 +28,6 @@ public class TemyAdapter extends ArrayAdapter<String> {
     private final Context myContext;
     private final int myRecourse;
     ArrayList<String> objects;
-    ThemeClass themeClassAdapt;
     Activity activity;
 
     SQLiteDatabase db;
@@ -54,30 +49,11 @@ public class TemyAdapter extends ArrayAdapter<String> {
         LayoutInflater layoutInflater = LayoutInflater.from(myContext);
         database = new DataBase(myContext);
         db = database.getWritableDatabase();
-        themeClassAdapt = new ThemeClass(myContext, activity, null, null,
-                null, null, null, null, null, null, null, null);
-        themeClassAdapt.callTheme();
 
         convertView = layoutInflater.inflate(myRecourse, parent, false);
         ImageView redact_t = convertView.findViewById(R.id.redact_t);
         ImageView delete_t = convertView.findViewById(R.id.delete_t);
         TextView tema = convertView.findViewById(R.id.tema_t);
-
-        //тема кастомизация
-
-        Drawable iconDelete = ContextCompat.getDrawable(myContext, R.drawable.ic_close_white);
-        Drawable iconRedact = ContextCompat.getDrawable(myContext, R.drawable.ic_redact);
-        if(iconDelete !=null){
-            iconDelete=iconDelete.mutate();
-            iconDelete.setColorFilter(themeClassAdapt.getButtonColor(), PorterDuff.Mode.SRC_IN);
-            delete_t.setImageDrawable(iconDelete);
-        }
-        if(iconRedact !=null){
-            iconRedact=iconRedact.mutate();
-            iconRedact.setColorFilter(themeClassAdapt.getButtonColor(), PorterDuff.Mode.SRC_IN);
-            redact_t.setImageDrawable(iconRedact);
-        }
-        tema.setTextColor(themeClassAdapt.getForText());
 
         tema.setText(objects.get(position));
 
@@ -119,9 +95,6 @@ public class TemyAdapter extends ArrayAdapter<String> {
             builder.setView(container);
             AlertDialog dialog =builder.create();
             dialog.show();
-            themeClassAdapt.styleAlertDialog(dialog);
-            ed.setHintTextColor(themeClassAdapt.getForText());
-            ed.setTextColor(themeClassAdapt.getForText());
         });
 
        delete_t.setOnClickListener(view -> {
@@ -141,8 +114,6 @@ public class TemyAdapter extends ArrayAdapter<String> {
            });
            AlertDialog dialog =builder.create();
            dialog.show();
-           themeClassAdapt.styleAlertDialog(dialog);
-
        });
 
         return Objects.requireNonNull(convertView);

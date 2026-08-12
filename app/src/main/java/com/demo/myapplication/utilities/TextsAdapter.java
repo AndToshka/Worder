@@ -8,8 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +19,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.core.content.ContextCompat;
 
 import com.demo.myapplication.R;
 import com.demo.myapplication.texts.PlayText;
@@ -60,22 +57,6 @@ public class TextsAdapter extends ArrayAdapter<String> {
         ImageView redact_t = convertView.findViewById(R.id.redact_t);
         ImageView delete_t = convertView.findViewById(R.id.delete_t);
         TextView tema = convertView.findViewById(R.id.tema_t);
-        ThemeClass themeClassAdapter = new ThemeClass(myContext, activity, null, null,
-                null, null, null, null, null, null, null, null);
-        themeClassAdapter.callTheme();
-        Drawable iconDelete = ContextCompat.getDrawable(myContext, R.drawable.ic_close_white);
-        Drawable iconRedact = ContextCompat.getDrawable(myContext, R.drawable.ic_redact);
-        if(iconDelete !=null){
-            iconDelete=iconDelete.mutate();
-            iconDelete.setColorFilter(themeClassAdapter.getButtonColor(), PorterDuff.Mode.SRC_IN);
-            delete_t.setImageDrawable(iconDelete);
-        }
-        if(iconRedact !=null){
-            iconRedact=iconRedact.mutate();
-            iconRedact.setColorFilter(themeClassAdapter.getButtonColor(), PorterDuff.Mode.SRC_IN);
-            redact_t.setImageDrawable(iconRedact);
-        }
-        tema.setTextColor(themeClassAdapter.getForText());
 
         tema.setText(objects.get(position));
         String key = "Text" + g;
@@ -119,15 +100,11 @@ public class TextsAdapter extends ArrayAdapter<String> {
             });
             AlertDialog dialog =builder.create();
             dialog.show();
-            themeClassAdapter.styleAlertDialog(dialog);
-            nazv.setTextColor(themeClassAdapter.getForText());
-            text52.setTextColor(themeClassAdapter.getForText());
-            text53.setTextColor(themeClassAdapter.getForText());
         });
 
         delete_t.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(myContext);
-            builder.setTitle(R.string.tx53+" " + objects.get(position));
+            builder.setTitle(myContext.getString(R.string.tx53) + " " + objects.get(position));
             builder.setCancelable(true);
             builder.setMessage(R.string.tx54);
             builder.setNegativeButton(R.string.tx30, (dialogInterface, i) -> dialogInterface.cancel());
@@ -137,15 +114,14 @@ public class TextsAdapter extends ArrayAdapter<String> {
                 objects.remove(position);
                 notifyDataSetChanged();
             });
-            AlertDialog dialog =builder.create();
+            AlertDialog dialog = builder.create();
             dialog.show();
-            themeClassAdapter.styleAlertDialog(dialog);
         });
 
         tema.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(myContext);
             builder.setCancelable(true);
-            builder.setTitle(R.string.tx56+" " + objects.get(position));
+            builder.setTitle(myContext.getString(R.string.tx56)+" " + objects.get(position));
             builder.setNegativeButton(R.string.tx30, ((dialogInterface, i) -> dialogInterface.cancel()));
             builder.setPositiveButton(R.string.tx57, ((dialogInterface, i) -> {
                 nnn3 = db.rawQuery("select * from " + key + " WHERE naz" + g + "='" + objects.get(position) + "'", null);
@@ -167,7 +143,6 @@ public class TextsAdapter extends ArrayAdapter<String> {
             }));
             AlertDialog dialog =builder.create();
             dialog.show();
-            themeClassAdapter.styleAlertDialog(dialog);
         });
 
         return convertView;

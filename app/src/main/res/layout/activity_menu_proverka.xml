@@ -5,6 +5,7 @@
     android:id="@+id/pr"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorPrimary"
     tools:context=".check.Proverka">
 
 
@@ -19,7 +20,7 @@
         android:fontFamily="sans-serif-medium"
         android:gravity="center"
         android:onClick="Reg"
-        android:textColor="@color/white"
+        android:textColor="?android:textColor"
         android:textSize="26sp"
         app:layout_constraintStart_toEndOf="@id/goBackProverka"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,7 +30,7 @@
         android:id="@+id/goBackProverka"
         android:layout_width="55dp"
         android:layout_height="55dp"
-        android:background="@drawable/bg_round_button_white"
+        android:background="@drawable/bg_round_button"
         android:src="@drawable/ic_back"
         android:onClick="Go_back_proverka"
         android:layout_marginTop="18dp"
@@ -41,10 +42,9 @@
         android:id="@+id/bn"
         android:layout_width="203dp"
         android:layout_height="64dp"
-        android:backgroundTint="@color/white"
-
+        android:backgroundTint="?attr/colorOnPrimary"
         android:onClick="Level"
-        android:textColor="@color/black"
+        android:textColor="?android:textColor"
         android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <!-- Текст - занимает все пространство слева до redact_t -->
     <TextView
         android:id="@+id/tema_t"
         android:layout_width="match_parent"
@@ -12,12 +11,10 @@
         android:layout_toStartOf="@+id/redact_t"
         android:layout_alignParentStart="true"
         android:fontFamily="sans-serif-medium"
-        android:text="Hello"
-        android:textColor="@color/white"
+        android:textColor="?android:textColor"
         android:textSize="25sp"
         android:paddingEnd="8dp"/>
 
-    <!-- Кнопка редактирования - 20dp от delete_t -->
     <ImageButton
         android:id="@+id/redact_t"
         android:layout_width="35dp"
@@ -27,7 +24,6 @@
         android:src="@drawable/ic_redact"
         android:background="@android:color/transparent"/>
 
-    <!-- Кнопка удаления - 5dp от правого края -->
     <ImageButton
         android:id="@+id/delete_t"
         android:layout_width="35dp"
