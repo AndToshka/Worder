@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.GradientDrawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
+import androidx.core.graphics.ColorUtils;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.demo.myapplication.R;
@@ -90,6 +92,10 @@ public class AchievementsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         int strokeColor = unlocked
                 ? ContextCompat.getColor(context, R.color.green)
                 : ContextCompat.getColor(context, R.color.gray);
+        if(unlocked){
+            int color = ContextCompat.getColor(context, R.color.green);
+            holder.itemView.setBackgroundColor(ColorUtils.setAlphaComponent(color, 128));
+        }
 
         circle.setStroke(   8, strokeColor);
     }
@@ -125,8 +131,10 @@ public class AchievementsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 visibleAchievements = new ArrayList<>();
                 for (Achievement a : all) {
                     boolean unlocked = Achievement.isUnlocked(context, a.id);
+                    Log.d("Achievement", a.id+"  is unlock: "+unlocked);
                     if (!a.secret || unlocked) {
                         visibleAchievements.add(a);
+                        //Log.d("Achievement", "Added:    "+ a.id);
                     }
                 }
                 cursor = null;

@@ -15,6 +15,7 @@ import com.demo.myapplication.texts.Texts;
 import com.demo.myapplication.utilities.Achievement;
 import com.demo.myapplication.utilities.AppSettings;
 import com.demo.myapplication.utilities.BaseActivity;
+import com.demo.myapplication.utilities.UnlockAch;
 
 public class MainActivity extends BaseActivity {
       int j=0;
@@ -28,7 +29,7 @@ public class MainActivity extends BaseActivity {
 
     public void worderRegime(View k) {
         j++;
-         if(j==7) Achievement.unlock(this, "worder-regime");
+        if(j==7) UnlockAch.unlockWorder(this);
     }
     public void gotoSl(View k1) {
         Intent i = new Intent(this, Tablica.class);

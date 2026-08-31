@@ -15,6 +15,7 @@ import com.demo.myapplication.settings.MainActivity;
 import com.demo.myapplication.utilities.BaseActivity;
 import com.demo.myapplication.utilities.DataBase;
 import com.demo.myapplication.utilities.Result;
+import com.demo.myapplication.utilities.UnlockAch;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -29,11 +30,7 @@ public class Play extends BaseActivity {
     Cursor userCursor;
     SQLiteDatabase db;
     DataBase database;
-    int reg=1;
-    int t=0;
-    int t1=0;
-    private int currentIndex = -1;
-
+    private int reg=1, t=0, t1=0, currentIndex = -1, rightContract=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,10 +105,11 @@ public class Play extends BaseActivity {
         }
 
         if (isCorrect) {
-            t++;
+            t++; rightContract++;
             stat2.setText(reg == 1 ? "Great, that's right" : "Отлично, всё верно");
+            if(rightContract==10) UnlockAch.unlockPerfect(this);
         } else {
-            t1++;
+            t1++; rightContract=0;
             stat2.setText(reg == 1 ? "Mistake. The correct translation is " +translate.get(currentIndex)+", and you wrote "+edt.getText().toString() :
                     "Ошибка. правильный перевод: "+ wordo.get(currentIndex)+ ", а ты написал "+edt.getText().toString());
         }
@@ -127,6 +125,8 @@ public class Play extends BaseActivity {
     private void showResults() {
         Result res = new Result(t, t1, this, this);
         res.show(getSupportFragmentManager(), "ghbdtn");
+        UnlockAch.unlockResult(this, t, t1+t);
+        UnlockAch.unlockNight(this);
     }
 
     private void createDatt() {

@@ -18,6 +18,7 @@ import com.demo.myapplication.settings.MainActivity;
 import com.demo.myapplication.R;
 import com.demo.myapplication.utilities.BaseActivity;
 import com.demo.myapplication.utilities.DataBase;
+import com.demo.myapplication.utilities.UnlockAch;
 
 
 public class AddText extends BaseActivity {
@@ -79,6 +80,8 @@ public class AddText extends BaseActivity {
                         text_eng.setText("");
                         text_rus.setText("");
                         Toast.makeText(this, R.string.tx61, Toast.LENGTH_SHORT).show();
+                        UnlockAch.firstText(this); UnlockAch.unlockTextAchievements(this);
+                        UnlockAch.unlockTolstoy(this, text_eng.getText().toString());
                     }
                 }
             });

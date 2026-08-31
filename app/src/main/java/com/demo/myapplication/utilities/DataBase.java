@@ -28,7 +28,6 @@ public class DataBase extends SQLiteOpenHelper {
     public static final String COL_NAZ = "naz";
     public static final String COL_RESULT = "result";
     public static final String COL_DATE= "date";
-    public static final String COL_ORDER= "orderNum";
 
         public DataBase(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -171,6 +170,15 @@ public class DataBase extends SQLiteOpenHelper {
         if (c.moveToFirst()) { count = c.getInt(0);}
         c.close(); db.close();
         return count;
+    }
+
+    public static int is100Words(Context context, String topic){
+        DataBase helper = new DataBase(context);
+        SQLiteDatabase db = helper.getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT COUNT(*) FROM "+DataBase.TABLE
+                +" WHERE topic='"+topic+"'", null);
+
+            return c.moveToFirst() ? c.getInt(0) : 0;
     }
 
 

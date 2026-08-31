@@ -19,6 +19,7 @@ import com.demo.myapplication.R;
 import com.demo.myapplication.utilities.BaseActivity;
 import com.demo.myapplication.utilities.DataBase;
 import com.demo.myapplication.utilities.TemyAdapter;
+import com.demo.myapplication.utilities.UnlockAch;
 
 import java.util.ArrayList;
 
@@ -103,6 +104,7 @@ public class UpdateTopic extends BaseActivity {
                     db.insert(DataBase.TABLE2, null, cv);
                     nn.add(ed.getText().toString());
                     temyAdapter.notifyDataSetChanged();
+                    UnlockAch.unlockTopics(this);
                 }
             }
         });

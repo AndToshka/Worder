@@ -10,7 +10,7 @@ import org.xmlpull.v1.XmlPullParser;
 import java.util.ArrayList;
 import java.util.List;
 
- public class Achievement {
+public class Achievement {
     public String id;
     public int icon;
     public String title;
@@ -34,8 +34,9 @@ import java.util.List;
     public static void unlock(Context c, String id) {
         c.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
                 .edit()
-                .putBoolean(id, false)
+                .putBoolean(id, true)
                 .apply();
+
     }
 
     public static List<Achievement> load(Context c) {

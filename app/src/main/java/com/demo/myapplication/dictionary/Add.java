@@ -19,6 +19,7 @@ import com.demo.myapplication.settings.MainActivity;
 import com.demo.myapplication.R;
 import com.demo.myapplication.utilities.BaseActivity;
 import com.demo.myapplication.utilities.DataBase;
+import com.demo.myapplication.utilities.UnlockAch;
 
 import java.util.ArrayList;
 
@@ -91,6 +92,7 @@ public class Add extends BaseActivity {
                             db.insert(DataBase.TABLE2, null, cv);
                             copy.add(ed.getText().toString());
                             spin.post(() -> spin.setSelection(copy.size() - 1));
+                            UnlockAch.unlockTopics(this);
                         }
              }
          });
@@ -113,6 +115,8 @@ public class Add extends BaseActivity {
                 db.insert(DataBase.TABLE, null, cv);
                 word_r.setText("");
                 word_e.setText("");
+                UnlockAch.firstWord(this); UnlockAch.unlockWordAchievements(this);
+                UnlockAch.unlockProfessional(this, e3);
             }
     }
 
