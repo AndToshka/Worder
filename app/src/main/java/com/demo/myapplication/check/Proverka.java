@@ -20,14 +20,13 @@ import com.demo.myapplication.utilities.DataBase;
 import java.util.ArrayList;
 
 public class Proverka extends BaseActivity {
-    TextView rm;
-    ListView lvc;
-    Button bn;
-    Cursor userCursor;
-    SQLiteDatabase db;
-    DataBase database;
-    ArrayList<String> tem = new ArrayList<>();
-    ArrayList<String> choos = new ArrayList<>();
+    private TextView rm;
+    private ListView lvc;
+    private Button bn;
+    private Cursor userCursor;
+    private SQLiteDatabase db;
+    private final ArrayList<String> tem = new ArrayList<>();
+    private final ArrayList<String> choos = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +37,7 @@ public class Proverka extends BaseActivity {
         bn=findViewById(R.id.bn);
         lvc=findViewById(R.id.choose);
 
-        database = new DataBase(this);
+        DataBase database = new DataBase(this);
         db = database.getWritableDatabase();
         createDatt();
         rm.setText("С русского на английский");

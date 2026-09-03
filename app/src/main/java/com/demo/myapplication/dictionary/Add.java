@@ -24,14 +24,12 @@ import com.demo.myapplication.utilities.UnlockAch;
 import java.util.ArrayList;
 
 public class Add extends BaseActivity {
-
-    EditText word_e, word_r;
-    Spinner spin;
-    Cursor userCursor;
+    private EditText word_e, word_r;
+    private Spinner spin;
     private String condition;
-    ArrayList<String> copy = new ArrayList<>();
-    SQLiteDatabase db;
-    DataBase database;
+    private final ArrayList<String> copy = new ArrayList<>();
+    private SQLiteDatabase db;
+    private DataBase database;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +42,7 @@ public class Add extends BaseActivity {
             db = database.getWritableDatabase();
 
 
-            userCursor = db.rawQuery("select * from "+ DataBase.TABLE2, null);
+        Cursor userCursor = db.rawQuery("select * from "+ DataBase.TABLE2, null);
             if(userCursor.moveToFirst()) {
                 do {
                     copy.add(userCursor.getString(1));

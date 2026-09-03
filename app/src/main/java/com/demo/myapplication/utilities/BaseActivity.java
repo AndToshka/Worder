@@ -32,8 +32,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         ImageView icon = popup.findViewById(R.id.achievement_icon);
         TextView title = popup.findViewById(R.id.achievement_description);
 
-        icon.setImageResource(achievement.icon);
-        title.setText(achievement.title);
+        icon.setImageResource(achievement.getIcon());
+        title.setText(achievement.getTitle());
 
         root.addView(popup);
 

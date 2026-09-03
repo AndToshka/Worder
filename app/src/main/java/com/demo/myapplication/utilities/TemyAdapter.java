@@ -1,7 +1,6 @@
 package com.demo.myapplication.utilities;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.text.InputType;
@@ -27,16 +26,13 @@ public class TemyAdapter extends ArrayAdapter<String> {
 
     private final Context myContext;
     private final int myRecourse;
-    ArrayList<String> objects;
-    Activity activity;
+    private final ArrayList<String> objects;
+    private SQLiteDatabase db;
+    private DataBase database;
 
-    SQLiteDatabase db;
-    DataBase database;
-
-    public TemyAdapter(@NonNull Context context, Activity activity, int resource, @NonNull ArrayList<String> objects) {
+    public TemyAdapter(@NonNull Context context, int resource, @NonNull ArrayList<String> objects) {
         super(context, resource, objects);
         this.myContext=context;
-        this.activity=activity;
         this.myRecourse=resource;
         this.objects=objects;
     }

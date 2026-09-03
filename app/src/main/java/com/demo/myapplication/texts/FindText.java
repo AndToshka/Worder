@@ -18,33 +18,31 @@ import com.demo.myapplication.utilities.DataBase;
 import java.util.ArrayList;
 
 public class FindText extends BaseActivity {
-    SQLiteDatabase db;
-    DataBase database;
-    ArrayList<String> for_naz = new ArrayList<>();
-    ListView All_tem;
-    Cursor aa, aa2, userCursor;
-    ArrayAdapter<String> adapter;
-    SearchView search;
-    AlertDialog.Builder builder;
-    String angll, rusn;
+    private SQLiteDatabase db;
+    private final ArrayList<String> for_naz = new ArrayList<>();
+    private Cursor aa, aa2;
+    private ArrayAdapter<String> adapter;
+    private AlertDialog.Builder builder;
+    private String angll, rusn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_redact_texts);
 
-        All_tem = findViewById(R.id.listView);
-        search = findViewById(R.id.searchView);
+        ListView All_tem = findViewById(R.id.listView);
+        SearchView search = findViewById(R.id.searchView);
 
-        database = new DataBase(this);
+        DataBase database = new DataBase(this);
         db = database.getWritableDatabase();
 
-        userCursor = db.rawQuery("select * from "+ DataBase.TABLE3, null);
+        Cursor userCursor = db.rawQuery("select * from "+ DataBase.TABLE3, null);
         if(userCursor.moveToFirst()) {
             do {
                 for_naz.add(userCursor.getString(3));
             } while (userCursor.moveToNext());
         }
+        userCursor.close();
 
         userCursor = db.rawQuery("select * from "+ DataBase.TABLE4, null);
         if(userCursor.moveToFirst()) {
@@ -52,6 +50,7 @@ public class FindText extends BaseActivity {
                 for_naz.add(userCursor.getString(3));
             } while (userCursor.moveToNext());
         }
+        userCursor.close();
 
 
 

@@ -2,7 +2,6 @@ package com.demo.myapplication.utilities;
 
 import static android.content.Context.MODE_PRIVATE;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -22,17 +21,14 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Result extends AppCompatDialogFragment {
-
     private final int right, notRight;
-    Context context;
-    Activity activity;
-    SharedPreferences topScores;
+    private final Context context;
+    private final SharedPreferences topScores;
 
-    public Result(int data1, int data2, Context context, Activity activity) {
+    public Result(int data1, int data2, Context context) {
         this.right = data1;
         this.notRight = data2;
         this.context = context;
-        this.activity = activity;
         this.topScores = context.getSharedPreferences("PREFS_DB", MODE_PRIVATE);
     }
 

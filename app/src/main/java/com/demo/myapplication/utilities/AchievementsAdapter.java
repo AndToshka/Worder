@@ -80,14 +80,14 @@ public class AchievementsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private void bindChoiceViewHolder(ChoiceViewHolder holder, int position) {
         Achievement a = visibleAchievements.get(position);
 
-        holder.pictures.setImageResource(a.icon);
-        holder.achievements.setText(a.title);
-        holder.description.setText(a.desc);
+        holder.pictures.setImageResource(a.getIcon());
+        holder.achievements.setText(a.getTitle());
+        holder.description.setText(a.getDesc());
 
         GradientDrawable circle =
                 (GradientDrawable) holder.pictures.getBackground().mutate();
 
-        boolean unlocked = Achievement.isUnlocked(context, a.id);
+        boolean unlocked = Achievement.isUnlocked(context, a.getId());
 
         int strokeColor = unlocked
                 ? ContextCompat.getColor(context, R.color.green)
@@ -130,9 +130,9 @@ public class AchievementsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 List<Achievement> all = Achievement.load(context);
                 visibleAchievements = new ArrayList<>();
                 for (Achievement a : all) {
-                    boolean unlocked = Achievement.isUnlocked(context, a.id);
-                    Log.d("Achievement", a.id+"  is unlock: "+unlocked);
-                    if (!a.secret || unlocked) {
+                    boolean unlocked = Achievement.isUnlocked(context, a.getId());
+                    Log.d("Achievement", a.getId()+"  is unlock: "+unlocked);
+                    if (!a.isSecret() || unlocked) {
                         visibleAchievements.add(a);
                         //Log.d("Achievement", "Added:    "+ a.id);
                     }

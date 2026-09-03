@@ -26,13 +26,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Settings extends BaseActivity {
-    List<LinearLayout> elements = new ArrayList<>();
-    List<FrameLayout> icons = new ArrayList<>();
-    SharedPreferences preferences;
-    RadioGroup radioGroup;
-    RadioButton russianButton, englishButton, num5, num10, num15;
-    ArrayList<String> packages = new ArrayList<>(List.of("MainActivityAlias1", "MainActivityAlias3", "MainActivityAlias2"));
-
+    private SharedPreferences preferences;
+    private final List<LinearLayout> elements = new ArrayList<>();
+    private final List<FrameLayout> icons = new ArrayList<>();
+    private final ArrayList<String> packages = new ArrayList<>(List.of("MainActivityAlias1", "MainActivityAlias3", "MainActivityAlias2"));
     private final int[] backgroundColors = {R.color.white, R.color.te7, R.color.te9};
 
     @Override
@@ -43,15 +40,16 @@ public class Settings extends BaseActivity {
         LinearLayout clickableElement1 = findViewById(R.id.clickable_element);
         LinearLayout clickableElement2 = findViewById(R.id.clickable_element2);
         LinearLayout clickableElement3 = findViewById(R.id.clickable_element3);
-        russianButton = findViewById(R.id.russianButton);
-        englishButton = findViewById(R.id.englishButton);
-        num5 = findViewById(R.id.num5);
-        num10 = findViewById(R.id.num10);
-         num15 = findViewById(R.id.num15);
+        RadioButton russianButton = findViewById(R.id.russianButton);
+        RadioButton englishButton = findViewById(R.id.englishButton);
+        RadioButton num5 = findViewById(R.id.num5);
+        RadioButton num10 = findViewById(R.id.num10);
+        RadioButton num15 = findViewById(R.id.num15);
         FrameLayout clickableElement4 = findViewById(R.id.iconBlackContainer);
         FrameLayout clickableElement5 = findViewById(R.id.imageButton3Container);
         FrameLayout clickableElement6 = findViewById(R.id.icon2Container);
-        radioGroup = findViewById(R.id.radioGroup);
+        RadioGroup radioGroup = findViewById(R.id.radioGroup);
+        RadioGroup radioGroupNum =findViewById(R.id.radioGroup2);
 
         elements.add(clickableElement1);
         elements.add(clickableElement2);

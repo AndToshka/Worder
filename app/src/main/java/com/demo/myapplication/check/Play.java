@@ -21,15 +21,14 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Play extends BaseActivity {
-    ArrayList<String> vbtem = new ArrayList<>();
-    ArrayList<String> wordo = new ArrayList<>();
-    ArrayList<String> translate = new ArrayList<>();
-    TextView word, word2, word3, stat1, stat2;
-    Button btn;
-    EditText edt;
-    Cursor userCursor;
-    SQLiteDatabase db;
-    DataBase database;
+    private ArrayList<String> vbtem = new ArrayList<>();
+    private final ArrayList<String> wordo = new ArrayList<>();
+    private final ArrayList<String> translate = new ArrayList<>();
+    private TextView word2, stat1, stat2;
+    private EditText edt;
+    private Cursor userCursor;
+    private SQLiteDatabase db;
+    private DataBase database;
     private int reg=1, t=0, t1=0, currentIndex = -1, rightContract=0;
 
     @Override
@@ -37,10 +36,12 @@ public class Play extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
 
-        word = findViewById(R.id.iii);
-        word2 = findViewById(R.id.iii2); word3 = findViewById(R.id.iii3);
-        stat1 = findViewById(R.id.iii4); stat2 = findViewById(R.id.iii5);
-        btn = findViewById(R.id.button2);
+        TextView word = findViewById(R.id.iii);
+        word2 = findViewById(R.id.iii2);
+        TextView word3 = findViewById(R.id.iii3);
+        stat1 = findViewById(R.id.iii4);
+        stat2 = findViewById(R.id.iii5);
+        Button btn = findViewById(R.id.button2);
         edt = findViewById(R.id.editTextText);
 
         Intent inter = getIntent();
@@ -123,7 +124,7 @@ public class Play extends BaseActivity {
     }
 
     private void showResults() {
-        Result res = new Result(t, t1, this, this);
+        Result res = new Result(t, t1,  this);
         res.show(getSupportFragmentManager(), "ghbdtn");
         UnlockAch.unlockResult(this, t, t1+t);
         UnlockAch.unlockNight(this);

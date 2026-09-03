@@ -6,7 +6,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,26 +17,20 @@ import com.demo.myapplication.utilities.BaseActivity;
 import com.demo.myapplication.utilities.DataBase;
 
 public class PlayText extends BaseActivity {
-    TextView qq, qq2;
-    EditText q;
-    Button sh;
-    String s1, s2, s3;
-    SQLiteDatabase db;
-    DataBase database;
-    Cursor cs;
-
+    private EditText q;
+    private String s1, s2, s3;
+    private SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_text_playn);
 
-        database = new DataBase(this);
+        DataBase database = new DataBase(this);
         db = database.getWritableDatabase();
 
-        qq=findViewById(R.id.ddd); qq2=findViewById(R.id.textView8);
+        TextView qq=findViewById(R.id.ddd);
         q=findViewById(R.id.ddd2);
-        sh=findViewById(R.id.ddd3);
 
         Bundle arguments = getIntent().getExtras();
         s1 = arguments.get("hello").toString();
@@ -66,12 +59,13 @@ public class PlayText extends BaseActivity {
             input3.setText(s2);
 
             builder.setPositiveButton(R.string.tx41, ((dialogInterface, i) -> {
-                cs = db.rawQuery("select * from " + DataBase.TABLE3 +
+                Cursor cs = db.rawQuery("select * from " + DataBase.TABLE3 +
                         " WHERE naz='" + s3 + "'", null);
                 if (cs.getCount() != 0) {
                     db.execSQL("INSERT INTO Text2 (text_e2,text_r2, naz2) VALUES ('" + s1 + "', '" + s2 + "', '" + s3 + "');");
                     db.execSQL("DELETE FROM Text WHERE naz='" + s3 + "';");
                 }
+                cs.close();
                 dialogInterface.cancel();
                 Intent g = new Intent(PlayText.this, Texts.class);
                 startActivity(g);

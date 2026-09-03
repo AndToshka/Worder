@@ -18,7 +18,7 @@ import com.demo.myapplication.utilities.BaseActivity;
 import com.demo.myapplication.utilities.UnlockAch;
 
 public class MainActivity extends BaseActivity {
-      int j=0;
+    private int j=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -24,27 +24,22 @@ import com.demo.myapplication.utilities.UnlockAch;
 import java.util.ArrayList;
 
 public class UpdateTopic extends BaseActivity {
-
-    DataBase database;
-    SQLiteDatabase db;
-    Cursor userCursor;
-    TemyAdapter temyAdapter;
-    ListView userList;
-    SearchView search_filter;
-    ArrayList<String> nn = new ArrayList<>();
+    private SQLiteDatabase db;
+    private TemyAdapter temyAdapter;
+    private final ArrayList<String> nn = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_redact_tema);
 
-        userList = findViewById(R.id.vv);
-        search_filter = findViewById(R.id.search);
+        ListView userList = findViewById(R.id.vv);
+        SearchView search_filter = findViewById(R.id.search);
 
-        database = new DataBase(getApplicationContext());
+        DataBase database = new DataBase(getApplicationContext());
         db = database.getReadableDatabase();
         createData();
-        temyAdapter = new TemyAdapter(this,this,  R.layout.stil_temy ,nn);
+        temyAdapter = new TemyAdapter(this, R.layout.stil_temy ,nn);
         userList.setAdapter(temyAdapter);
 
         search_filter.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -63,12 +58,13 @@ public class UpdateTopic extends BaseActivity {
     }
 
     private void createData() {
-        userCursor =  db.rawQuery("select * from "+ DataBase.TABLE2, null);
+        Cursor userCursor =  db.rawQuery("select * from "+ DataBase.TABLE2, null);
         if(userCursor.moveToFirst()) {
             do {
                 nn.add(userCursor.getString(1));
             } while (userCursor.moveToNext());
         }
+        userCursor.close();
     }
 
     public void go_back(View b) {

@@ -34,16 +34,13 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
     private final Context context;
     private final Map<String, List<String>> mobileCollection;
     private final List<String> groupList;
-    Map<String, List<String>> mobileCollection_or;
-    Activity activity;
+    private final Map<String, List<String>> mobileCollection_or;
+    private SQLiteDatabase db;
+    private DataBase database;
 
-    SQLiteDatabase db;
-    DataBase database;
-
-    public MyExpandableListAdapter(Context context, Activity activity, List<String> groupList,
+    public MyExpandableListAdapter(Context context, List<String> groupList,
                                    Map<String, List<String>> mobileCollection){
         this.context=context;
-        this.activity = activity;
         this.groupList=groupList;
         this.mobileCollection=mobileCollection;
         mobileCollection_or = new HashMap<>();

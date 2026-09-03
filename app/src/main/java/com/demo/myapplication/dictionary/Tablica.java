@@ -24,36 +24,31 @@ import java.util.Map;
 
 public class Tablica extends BaseActivity
         implements SearchView.OnQueryTextListener, SearchView.OnCloseListener{
-
-    List<String> groupList, childList;
-    Map<String, List<String>> mobileCollection;
-    ExpandableListView expandableListView;
-    MyExpandableListAdapter expandableListAdapter;
-    Cursor ff, ff2;
-    SearchView search;
-    SearchManager searchManager;
-    SQLiteDatabase db;
-    DataBase database;
-    ArrayList<String> sl = new ArrayList<>();
-    ArrayList<String> pr = new ArrayList<>();
-    ArrayList<String> slpr = new ArrayList<>();
-    ArrayList<String> ty = new ArrayList<>();
+    private List<String> groupList;
+    private Map<String, List<String>> mobileCollection;
+    private ExpandableListView expandableListView;
+    private MyExpandableListAdapter expandableListAdapter;
+    private SQLiteDatabase db;
+    private final ArrayList<String> sl = new ArrayList<>();
+    private final ArrayList<String> pr = new ArrayList<>();
+    private final ArrayList<String> slpr = new ArrayList<>();
+    private final ArrayList<String> ty = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tablica);
 
-        search = findViewById(R.id.search);
-        searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView search = findViewById(R.id.search);
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
 
-        database = new DataBase(this);
+        DataBase database = new DataBase(this);
         db = database.getWritableDatabase();
         
         createGroupList();
         createCollection();
         expandableListView = findViewById(R.id.elv);
-        expandableListAdapter = new MyExpandableListAdapter(this, this, groupList, mobileCollection);
+        expandableListAdapter = new MyExpandableListAdapter(this, groupList, mobileCollection);
         expandableListView.setAdapter(expandableListAdapter);
         explandAll();
         expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
@@ -89,7 +84,7 @@ public class Tablica extends BaseActivity
 
     //выгрузка словаря
     private void createCollection() {
-        ff2 =  db.rawQuery("select * from "+ DataBase.TABLE, null);
+        Cursor ff2 =  db.rawQuery("select * from "+ DataBase.TABLE, null);
         if(ff2.moveToFirst()) {
            do {
                sl.add(ff2.getString(1));
@@ -114,7 +109,7 @@ public class Tablica extends BaseActivity
         mobileCollection =new HashMap<>();
 
         for(String b2 : groupList){
-            childList = new ArrayList<>();
+            List<String> childList = new ArrayList<>();
             for(int o=0; o<pr.size(); o++){
                 String b1 = ty.get(o);
                 if (b2.equals(b1)) {
@@ -129,7 +124,7 @@ public class Tablica extends BaseActivity
     //выгрузка тем
     private void createGroupList() {
         groupList = new ArrayList<>();
-        ff =  db.rawQuery("select * from "+ DataBase.TABLE2, null);
+        Cursor ff =  db.rawQuery("select * from "+ DataBase.TABLE2, null);
         if(ff.moveToFirst()) {
             do {
                 groupList.add(ff.getString(1));

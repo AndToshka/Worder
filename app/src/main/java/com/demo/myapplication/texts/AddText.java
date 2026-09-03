@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,10 +23,9 @@ import com.demo.myapplication.utilities.UnlockAch;
 
 
 public class AddText extends BaseActivity {
-    DataBase database;
-    SQLiteDatabase db;
-    EditText text_eng, text_rus;
-    Cursor pr, pr2;
+    private SQLiteDatabase db;
+    private EditText text_eng, text_rus;
+    private Cursor pr, pr2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class AddText extends BaseActivity {
         setContentView(R.layout.activity_add_texts);
 
         text_eng=findViewById(R.id.wordeaa); text_rus=findViewById(R.id.prvv);
-        database = new DataBase(this);
+        DataBase database = new DataBase(this);
         db = database.getWritableDatabase();
     }
 
@@ -48,6 +48,7 @@ public class AddText extends BaseActivity {
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);}
 
     public void add_text(View k3){
+        Log.e("tolstoy", "startMethod");
         if(text_eng.getText().toString().isEmpty() | text_rus.getText().toString().isEmpty()){
             Toast.makeText(this, R.string.pd1, Toast.LENGTH_SHORT).show();
         }
@@ -77,11 +78,11 @@ public class AddText extends BaseActivity {
                         cv.put(DataBase.COL_TEXT_R, text_rus.getText().toString().trim());
                         cv.put(DataBase.COL_NAZ, ed.getText().toString().trim());
                         db.insert(DataBase.TABLE3, null, cv);
+                        UnlockAch.firstText(this); UnlockAch.unlockTextAchievements(this);
+                        UnlockAch.unlockTolstoy(this, text_eng.getText().toString());
                         text_eng.setText("");
                         text_rus.setText("");
                         Toast.makeText(this, R.string.tx61, Toast.LENGTH_SHORT).show();
-                        UnlockAch.firstText(this); UnlockAch.unlockTextAchievements(this);
-                        UnlockAch.unlockTolstoy(this, text_eng.getText().toString());
                     }
                 }
             });

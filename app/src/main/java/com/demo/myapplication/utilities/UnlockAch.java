@@ -22,8 +22,8 @@ public class UnlockAch {
         if(Achievement.isUnlocked(context, "all_ach")) return;
         List<Achievement> all = Achievement.load(context);
         for(Achievement a: all){
-            if(a.id.equals("all_ach")) continue;
-            if(!Achievement.isUnlocked(context, a.id)) return;
+            if(a.getId().equals("all_ach")) continue;
+            if(!Achievement.isUnlocked(context, a.getId())) return;
         }
         Achievement.unlock(context, "all_ach");
     }
@@ -31,7 +31,7 @@ public class UnlockAch {
     public static Achievement findById(Context c, String id) {
         List<Achievement> all = Achievement.load(c);
         for (Achievement a : all) {
-            if (a.id.equals(id)) {
+            if (a.getId().equals(id)) {
                 return a;
             }
         }

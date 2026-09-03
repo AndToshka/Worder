@@ -11,11 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Achievement {
-    public String id;
-    public int icon;
-    public String title;
-    public String desc;
-    public boolean secret;
+    private final String id;
+    private final int icon;
+    private final String title;
+    private final String desc;
+    private final boolean secret;
     private static final String PREFS = "achievements";
 
     public Achievement(String id, int icon, String title, String desc, boolean secret) {
@@ -72,5 +72,25 @@ public class Achievement {
 
         } catch (Exception e) { e.printStackTrace(); }
         return list;
+    }
+
+    public int getIcon() {
+        return icon;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public boolean isSecret() {
+        return secret;
     }
 }

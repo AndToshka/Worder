@@ -26,20 +26,16 @@ import com.demo.myapplication.texts.PlayText;
 import java.util.ArrayList;
 
 public class TextsAdapter extends ArrayAdapter<String> {
-
     private final Context myContext;
     private final int myRecourse;
-    ArrayList<String> objects;
-    final String g;
-    Cursor nnn3;
-    Activity activity;
-    SQLiteDatabase db;
-    DataBase database;
+    private final ArrayList<String> objects;
+    private final String g;
+    private Cursor nnn3;
+    private SQLiteDatabase db;
 
-    public TextsAdapter(@NonNull Context context, Activity activity, int resource, @NonNull ArrayList<String> objects, String g) {
+    public TextsAdapter(@NonNull Context context, int resource, @NonNull ArrayList<String> objects, String g) {
         super(context, resource, objects);
         this.myContext = context;
-        this.activity=activity;
         this.myRecourse = resource;
         this.objects = objects;
         this.g = g;
@@ -50,7 +46,7 @@ public class TextsAdapter extends ArrayAdapter<String> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater layoutInflater = LayoutInflater.from(myContext);
-        database = new DataBase(myContext);
+        DataBase database = new DataBase(myContext);
         db = database.getWritableDatabase();
 
         convertView = layoutInflater.inflate(myRecourse, parent, false);
