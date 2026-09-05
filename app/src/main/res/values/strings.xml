@@ -120,4 +120,7 @@
     <string name="ach_16">All achievements</string>
     <string name="desc_16">Collect all the achievements</string>
     <string name="tx70">New achievement!</string>
+    <string name="tx71">Sound</string>
+    <string name="tx72">On</string>
+    <string name="tx73">Off</string>
 </resources>

@@ -36,7 +36,7 @@ public class Achievement {
                 .edit()
                 .putBoolean(id, true)
                 .apply();
-
+        AppSettings.playSound(c, R.raw.ach);
     }
 
     public static List<Achievement> load(Context c) {

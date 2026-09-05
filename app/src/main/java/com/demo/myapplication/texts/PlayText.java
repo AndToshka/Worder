@@ -15,6 +15,7 @@ import androidx.appcompat.app.AlertDialog;
 import com.demo.myapplication.R;
 import com.demo.myapplication.utilities.BaseActivity;
 import com.demo.myapplication.utilities.DataBase;
+import com.demo.myapplication.utilities.AppSettings;
 
 public class PlayText extends BaseActivity {
     private EditText q;
@@ -75,6 +76,8 @@ public class PlayText extends BaseActivity {
             AlertDialog dialog = builder.create();
             dialog.show();
             dialog.setCanceledOnTouchOutside(false);
+
+            AppSettings.playSound(this, R.raw.end);
         }
     }
 }

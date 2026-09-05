@@ -156,6 +156,7 @@
         android:id="@+id/imageButton2"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:backgroundTint="?attr/colorOnPrimary"
         android:onClick="goBackSettings"
         android:background="@drawable/bg_round_button"
         android:src="@drawable/ic_back"
@@ -309,6 +310,55 @@
     </RadioGroup>
 
     <TextView
+        android:id="@+id/text5"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="start"
+        android:paddingLeft="3dp"
+        android:text="@string/tx71"
+        android:textColor="?android:textColor"
+        android:textSize="25sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radioGroup" />
+
+    <LinearLayout
+        android:id="@+id/sound"
+        android:layout_width="361dp"
+        android:layout_height="78dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text5">
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:trackTint="?attr/colorOnPrimary"
+            app:thumbTint="?android:textColor"
+            android:layout_marginStart="10dp" />
+
+        <TextView
+            android:id="@+id/soundText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@string/tx72"
+            android:textColor="?android:textColor"
+            android:textSize="30sp"
+            android:fontFamily="sans-serif-medium"
+            android:paddingLeft="3dp" />
+
+    </LinearLayout>
+
+
+
+    <TextView
         android:id="@+id/text4"
         android:layout_width="match_parent"
         android:layout_height="35dp"
@@ -321,7 +371,7 @@
         android:fontFamily="sans-serif-medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/radioGroup"/>
+        app:layout_constraintTop_toBottomOf="@id/sound"/>
 
     <RadioGroup
         android:id="@+id/radioGroup2"
@@ -379,6 +429,5 @@
             android:textColor="?android:textColor"
             android:textSize="30sp" />
     </RadioGroup>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -118,4 +118,7 @@
     <string name="ach_16">Все достижения</string>
     <string name="desc_16">Собери все достижения</string>
     <string name="tx70">Новое достижение!</string>
+    <string name="tx71">Звук</string>
+    <string name="tx72">Вкл</string>
+    <string name="tx73">Выкл</string>
 </resources>

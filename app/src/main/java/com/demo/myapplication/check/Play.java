@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.demo.myapplication.R;
 import com.demo.myapplication.settings.MainActivity;
+import com.demo.myapplication.utilities.AppSettings;
 import com.demo.myapplication.utilities.BaseActivity;
 import com.demo.myapplication.utilities.DataBase;
 import com.demo.myapplication.utilities.Result;
@@ -128,6 +129,7 @@ public class Play extends BaseActivity {
         res.show(getSupportFragmentManager(), "ghbdtn");
         UnlockAch.unlockResult(this, t, t1+t);
         UnlockAch.unlockNight(this);
+        AppSettings.playSound(this, R.raw.end);
     }
 
     private void createDatt() {

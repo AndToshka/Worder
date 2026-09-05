@@ -14,8 +14,10 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.content.ContextCompat;
 
 import com.demo.myapplication.R;
@@ -50,6 +52,8 @@ public class Settings extends BaseActivity {
         FrameLayout clickableElement6 = findViewById(R.id.icon2Container);
         RadioGroup radioGroup = findViewById(R.id.radioGroup);
         RadioGroup radioGroupNum =findViewById(R.id.radioGroup2);
+        SwitchCompat switchSound = findViewById(R.id.switch1);
+        TextView soundText = findViewById(R.id.soundText);
 
         elements.add(clickableElement1);
         elements.add(clickableElement2);
@@ -94,6 +98,45 @@ public class Settings extends BaseActivity {
             String lang = (checkedId == R.id.englishButton) ? "en" : "ru";
             AppSettings.saveLanguage(this, lang);
             recreate();
+        });
+
+        switch(AppSettings.getNum(this)){
+            case 5: num5.setChecked(true);
+                break;
+            case 10: num10.setChecked(true);
+                break;
+            case 15:
+            default: num15.setChecked(true);
+        }
+
+        radioGroupNum.setOnCheckedChangeListener((group, checkId) -> {
+             if(checkId ==-1) return;
+             int num;
+             if(checkId==R.id.num5) num=5;
+             else{
+                 if(checkId==R.id.num10) num=10;
+                 else{
+                     if(checkId==R.id.num15) num=15;
+                     else{ return;}
+                 }
+             }
+            AppSettings.saveNum(this, num);
+        });
+
+        switchSound.setChecked(AppSettings.getSound(this));
+        if(AppSettings.getSound(this)) soundText.setText(R.string.tx72);
+        else soundText.setText(R.string.tx73);
+        
+        switchSound.setOnCheckedChangeListener((buttonView, isChecked)->{
+            if(isChecked){
+                AppSettings.saveSound(this, true);
+                soundText.setText(R.string.tx72);
+                AppSettings.playSound(this, R.raw.on);
+            }
+            else{
+                AppSettings.saveSound(this, false);
+                soundText.setText(R.string.tx73);
+            }
         });
 
         setIcon();

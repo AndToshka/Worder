@@ -12,6 +12,7 @@
         android:id="@+id/bbb"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:backgroundTint="?attr/colorOnPrimary"
         android:background="@drawable/bg_round_button"
         android:src="@drawable/ic_back"
         android:onClick="Go_back"
@@ -20,18 +21,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <ImageButton
         android:id="@+id/imageViewgb"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:onClick="Go_home"
+        android:layout_marginStart="16dp"
+        android:backgroundTint="?attr/colorOnPrimary"
         android:background="@drawable/bg_round_button"
+        android:onClick="Go_home"
         android:src="@drawable/ic_home"
-        android:layout_marginStart="5dp"
+        app:layout_constraintBottom_toBottomOf="@id/bbb"
         app:layout_constraintStart_toEndOf="@id/bbb"
         app:layout_constraintTop_toTopOf="@id/bbb"
-        app:layout_constraintBottom_toBottomOf="@id/bbb" />
-
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/iii"
