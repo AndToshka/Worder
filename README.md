@@ -25,11 +25,11 @@
 Java-код:
 
 ```
-\MyApplication\app\src\main\java\com\demo\myapplication\
+app\src\main\java\com\demo\myapplication\
 ```
 
 XML-разметка интерфейса (стандартный путь Android-проекта):
 
 ```
-\MyApplication\app\src\main\res\layout\
+app\src\main\res\layout\
 ```
