@@ -13,15 +13,17 @@
         android:theme="@style/ThemeDark"
         tools:targetApi="31">
         <activity
+            android:name=".settings.Question"
+            android:exported="false" />
+        <activity
             android:name=".settings.MainActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
 
         <activity-alias
-            android:name=".MainActivityAlias1"
-            android:enabled="true"
+            android:name=".MainActivityAlias3"
+            android:enabled="false"
             android:exported="true"
-            android:icon="@mipmap/ic_icon_1"
+            android:icon="@mipmap/ic_icon_3"
             android:label="@string/app_name"
             android:targetActivity=".settings.MainActivity">
             <intent-filter>
@@ -44,10 +46,10 @@
             </intent-filter>
         </activity-alias>
         <activity-alias
-            android:name=".MainActivityAlias3"
-            android:enabled="false"
+            android:name=".MainActivityAlias1"
+            android:enabled="true"
             android:exported="true"
-            android:icon="@mipmap/ic_icon_3"
+            android:icon="@mipmap/ic_icon_1"
             android:label="@string/app_name"
             android:targetActivity=".settings.MainActivity">
             <intent-filter>

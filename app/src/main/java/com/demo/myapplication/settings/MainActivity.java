@@ -57,4 +57,10 @@ public class MainActivity extends BaseActivity {
         startActivity(i);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
+
+    public void gotoQue(View k6){
+        Intent i = new Intent(this, Question.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
 }
